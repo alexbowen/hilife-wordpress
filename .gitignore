@@ -1,0 +1,36 @@
+# Ignore everything
+*
+
+# .gitignore itself
+!.gitignore
+
+# Plugin
+!wp-content/
+wp-content/*
+!wp-content/plugins/
+wp-content/plugins/*
+!wp-content/plugins/hilife-core/
+!wp-content/plugins/hilife-core/**
+
+# Theme — only our specific files
+!wp-content/themes/
+wp-content/themes/*
+!wp-content/themes/twentytwentyfive/
+wp-content/themes/twentytwentyfive/*
+!wp-content/themes/twentytwentyfive/hilife.css
+!wp-content/themes/twentytwentyfive/header-hilife.php
+!wp-content/themes/twentytwentyfive/footer-hilife.php
+!wp-content/themes/twentytwentyfive/assets/
+wp-content/themes/twentytwentyfive/assets/*
+!wp-content/themes/twentytwentyfive/assets/logo.png
+!wp-content/themes/twentytwentyfive/templates/
+wp-content/themes/twentytwentyfive/templates/*
+!wp-content/themes/twentytwentyfive/templates/archive-dj.php
+!wp-content/themes/twentytwentyfive/templates/archive-music.php
+!wp-content/themes/twentytwentyfive/templates/front-page.php
+!wp-content/themes/twentytwentyfive/templates/occasion-location.php
+!wp-content/themes/twentytwentyfive/templates/single-dj.php
+!wp-content/themes/twentytwentyfive/templates/single-music-theme.php
+!wp-content/themes/twentytwentyfive/templates/taxonomy-location.php
+!wp-content/themes/twentytwentyfive/templates/taxonomy-occasion.php
+!wp-content/themes/twentytwentyfive/templates/taxonomy-service.php
