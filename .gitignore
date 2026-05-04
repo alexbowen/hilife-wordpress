@@ -4,6 +4,9 @@
 # .gitignore itself
 !.gitignore
 
+# htaccess
+!.htaccess
+
 # Plugin
 !wp-content/
 wp-content/*
@@ -23,10 +26,12 @@ wp-content/themes/twentytwentyfive/*
 !wp-content/themes/twentytwentyfive/assets/
 wp-content/themes/twentytwentyfive/assets/*
 !wp-content/themes/twentytwentyfive/assets/logo.png
+!wp-content/themes/twentytwentyfive/assets/hilife-header.css
 !wp-content/themes/twentytwentyfive/templates/
 wp-content/themes/twentytwentyfive/templates/*
 !wp-content/themes/twentytwentyfive/templates/archive-dj.php
 !wp-content/themes/twentytwentyfive/templates/archive-music.php
+!wp-content/themes/twentytwentyfive/templates/contact.php
 !wp-content/themes/twentytwentyfive/templates/front-page.php
 !wp-content/themes/twentytwentyfive/templates/occasion-location.php
 !wp-content/themes/twentytwentyfive/templates/single-dj.php
@@ -34,5 +39,3 @@ wp-content/themes/twentytwentyfive/templates/*
 !wp-content/themes/twentytwentyfive/templates/taxonomy-location.php
 !wp-content/themes/twentytwentyfive/templates/taxonomy-occasion.php
 !wp-content/themes/twentytwentyfive/templates/taxonomy-service.php
-
-git remote set-url origin git@github.com:alexbowen/hilife-wordpress.git

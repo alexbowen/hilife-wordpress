@@ -1,0 +1,37 @@
+# events app routing
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule ^bookings/csv$ /events/lib/csv.php [L]
+RewriteRule ^google/callback$ /events/lib/auth/google/callback.php [L,QSA]
+RewriteRule ^spotify/auth$ /events/lib/auth/spotify/auth.php [L]
+RewriteRule ^spotify/callback$ /events/lib/auth/spotify/callback.php [L]
+RewriteRule ^spotify/revoke$ /events/lib/auth/spotify/revoke.php [L]
+RewriteRule ^auth/revoke$ /events/lib/auth/revoke.php [L]
+RewriteRule ^auth/status$ /events/lib/auth/status.php [L]
+RewriteRule ^auth/(.*)?$ /events/lib/auth/default/$1.php [L,QSA]
+RewriteRule ^planner$ /events/index.php?auth=user&page_name=planner [L,QSA]
+RewriteRule ^planner/about$ /events/index.php?page_name=planner/about [L,QSA]
+RewriteRule ^planner/(.*)?$ /events/index.php?auth=user&page_name=planner/$1 [L,QSA]
+RewriteRule ^account$ /events/index.php?auth=user&page_name=account [L,QSA]
+RewriteRule ^account/(.*)?$ /events/index.php?page_name=account/$1 [L,QSA]
+RewriteRule ^admin/create/(.*)?$ /events/index.php?auth=admin&page_name=admin/create/$1&booking_type=$1 [L,QSA]
+RewriteRule ^admin/(.*)?$ /events/index.php?auth=admin&page_name=admin/$1 [L,QSA]
+RewriteRule ^actions/(.*?)/?$ /events/lib/actions/$1.php [L]
+RewriteRule ^events(/.*)?$ - [L]
+</IfModule>
+
+# BEGIN WordPress
+# The directives (lines) between "BEGIN WordPress" and "END WordPress" are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+# END WordPress
