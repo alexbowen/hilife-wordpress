@@ -34,3 +34,5 @@ wp-content/themes/twentytwentyfive/templates/*
 !wp-content/themes/twentytwentyfive/templates/taxonomy-location.php
 !wp-content/themes/twentytwentyfive/templates/taxonomy-occasion.php
 !wp-content/themes/twentytwentyfive/templates/taxonomy-service.php
+
+git remote set-url origin git@github.com:alexbowen/hilife-wordpress.git
