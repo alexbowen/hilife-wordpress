@@ -5,6 +5,7 @@
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php wp_head(); ?>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
@@ -66,17 +67,34 @@
         <!-- RIGHT — Enquiry form -->
         <div style="background:var(--black);padding:48px 40px;">
             <div class="hilife-section-label">Enquiry form</div>
-            <form method="post" action="/actions/enquiry" style="display:flex;flex-direction:column;">
+
+            <?php if ( isset($_GET['success']) ) : ?>
+                <div style="background:rgba(227,221,88,0.08);border:1px solid var(--gold);padding:16px 20px;margin-bottom:32px;font-size:13px;color:var(--text);">
+                    Thanks — we've received your enquiry and will be in touch shortly.
+                </div>
+            <?php endif; ?>
+
+            <?php if ( isset($_GET['error']) ) : ?>
+                <div style="background:rgba(255,80,80,0.08);border:1px solid rgba(255,80,80,0.4);padding:16px 20px;margin-bottom:32px;font-size:13px;color:var(--text);">
+                    Something went wrong — please try again or email us directly.
+                </div>
+            <?php endif; ?>
+
+            <form name="enquiry-form" action="/actions/event" method="post" novalidate>
 
                 <!-- Name + Email -->
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;">
                     <div style="border-bottom:1px solid var(--border);padding:16px 0;padding-right:24px;">
                         <label style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px;display:flex;align-items:center;gap:6px;font-family:var(--font-body);">Name <span style="color:var(--gold);">*</span></label>
-                        <input type="text" name="name" required placeholder="Your full name" style="background:transparent;border:none;outline:none;color:var(--text-bright);font-family:var(--font-body);font-size:14px;font-weight:300;width:100%;">
+                        <input type="text" name="event[primary_contact]" required maxlength="60" pattern="[ a-zA-Z\-]+"
+                               placeholder="Your full name"
+                               style="background:transparent;border:none;outline:none;color:var(--text-bright);font-family:var(--font-body);font-size:14px;font-weight:300;width:100%;">
                     </div>
                     <div style="border-bottom:1px solid var(--border);padding:16px 0;padding-left:24px;">
                         <label style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px;display:flex;align-items:center;gap:6px;font-family:var(--font-body);">Email address <span style="color:var(--gold);">*</span></label>
-                        <input type="email" name="email" required placeholder="your@email.com" style="background:transparent;border:none;outline:none;color:var(--text-bright);font-family:var(--font-body);font-size:14px;font-weight:300;width:100%;">
+                        <input type="email" name="event[email]" required
+                               placeholder="your@email.com"
+                               style="background:transparent;border:none;outline:none;color:var(--text-bright);font-family:var(--font-body);font-size:14px;font-weight:300;width:100%;">
                     </div>
                 </div>
 
@@ -84,11 +102,13 @@
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;">
                     <div style="border-bottom:1px solid var(--border);padding:16px 0;padding-right:24px;">
                         <label style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px;display:block;font-family:var(--font-body);">Telephone number</label>
-                        <input type="tel" name="phone" placeholder="Your phone number" style="background:transparent;border:none;outline:none;color:var(--text-bright);font-family:var(--font-body);font-size:14px;font-weight:300;width:100%;">
+                        <input type="tel" name="event[client_telephone]" pattern="(\+)?([0-9]){10,16}"
+                               placeholder="Your phone number"
+                               style="background:transparent;border:none;outline:none;color:var(--text-bright);font-family:var(--font-body);font-size:14px;font-weight:300;width:100%;">
                     </div>
                     <div style="border-bottom:1px solid var(--border);padding:16px 0;padding-left:24px;">
                         <label style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px;display:block;font-family:var(--font-body);">Event type</label>
-                        <select name="event_type" style="background:transparent;border:none;outline:none;color:var(--text-dim);font-family:var(--font-body);font-size:14px;font-weight:300;width:100%;appearance:none;-webkit-appearance:none;cursor:pointer;">
+                        <select name="event[type]" style="background:transparent;border:none;outline:none;color:var(--text-dim);font-family:var(--font-body);font-size:14px;font-weight:300;width:100%;appearance:none;-webkit-appearance:none;cursor:pointer;">
                             <option value="" disabled selected>Select occasion</option>
                             <?php
                             $occasions = get_terms(['taxonomy' => 'occasion', 'hide_empty' => false]);
@@ -96,6 +116,7 @@
                             ?>
                                 <option value="<?php echo esc_attr($occasion->slug); ?>"><?php echo esc_html($occasion->name); ?></option>
                             <?php endforeach; ?>
+                            <option value="other">Other</option>
                         </select>
                     </div>
                 </div>
@@ -104,20 +125,20 @@
                 <div style="border-bottom:1px solid var(--border);padding:16px 0;">
                     <label style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px;display:flex;align-items:center;gap:6px;font-family:var(--font-body);">Event date <span style="color:var(--gold);">*</span></label>
                     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">
-                        <select name="event_year" style="background:transparent;border:none;outline:none;color:var(--text-dim);font-family:var(--font-body);font-size:14px;font-weight:300;appearance:none;-webkit-appearance:none;">
+                        <select name="dateInput[year]" required style="background:transparent;border:none;outline:none;color:var(--text-dim);font-family:var(--font-body);font-size:14px;font-weight:300;appearance:none;-webkit-appearance:none;">
                             <option value="" disabled selected>Year</option>
-                            <?php for($y = date('Y'); $y <= date('Y') + 3; $y++) : ?>
-                                <option value="<?php echo $y; ?>"><?php echo $y; ?></option>
-                            <?php endfor; ?>
+                            <?php for($y = date('Y'); $y <= date('Y') + 5; $y++) echo "<option value='$y'>$y</option>"; ?>
                         </select>
-                        <select name="event_month" style="background:transparent;border:none;outline:none;color:var(--text-dim);font-family:var(--font-body);font-size:14px;font-weight:300;appearance:none;-webkit-appearance:none;">
+                        <select name="dateInput[month]" required style="background:transparent;border:none;outline:none;color:var(--text-dim);font-family:var(--font-body);font-size:14px;font-weight:300;appearance:none;-webkit-appearance:none;">
                             <option value="" disabled selected>Month</option>
                             <?php
-                            $months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-                            foreach($months as $i => $m) echo "<option value='" . ($i+1) . "'>$m</option>";
+                            for($m = 1; $m <= 12; $m++) {
+                                $dateObj = DateTime::createFromFormat('!m', $m);
+                                echo "<option value='$m'>" . $dateObj->format('F') . "</option>";
+                            }
                             ?>
                         </select>
-                        <select name="event_date" style="background:transparent;border:none;outline:none;color:var(--text-dim);font-family:var(--font-body);font-size:14px;font-weight:300;appearance:none;-webkit-appearance:none;">
+                        <select name="dateInput[day]" required style="background:transparent;border:none;outline:none;color:var(--text-dim);font-family:var(--font-body);font-size:14px;font-weight:300;appearance:none;-webkit-appearance:none;">
                             <option value="" disabled selected>Date</option>
                             <?php for($d = 1; $d <= 31; $d++) echo "<option value='$d'>$d</option>"; ?>
                         </select>
@@ -128,11 +149,15 @@
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;">
                     <div style="border-bottom:1px solid var(--border);padding:16px 0;padding-right:24px;">
                         <label style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px;display:block;font-family:var(--font-body);">Venue name</label>
-                        <input type="text" name="venue_name" placeholder="Venue or TBC" style="background:transparent;border:none;outline:none;color:var(--text-bright);font-family:var(--font-body);font-size:14px;font-weight:300;width:100%;">
+                        <input type="text" name="event[venue_name]" maxlength="60" pattern="[ a-zA-Z0-9\-]+"
+                               placeholder="Venue or TBC"
+                               style="background:transparent;border:none;outline:none;color:var(--text-bright);font-family:var(--font-body);font-size:14px;font-weight:300;width:100%;">
                     </div>
                     <div style="border-bottom:1px solid var(--border);padding:16px 0;padding-left:24px;">
                         <label style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px;display:block;font-family:var(--font-body);">Venue address</label>
-                        <input type="text" name="venue_address" placeholder="Address or area" style="background:transparent;border:none;outline:none;color:var(--text-bright);font-family:var(--font-body);font-size:14px;font-weight:300;width:100%;">
+                        <input type="text" name="event[venue_address]" maxlength="100" pattern="[ a-zA-Z0-9,.\-]+"
+                               placeholder="Address or area"
+                               style="background:transparent;border:none;outline:none;color:var(--text-bright);font-family:var(--font-body);font-size:14px;font-weight:300;width:100%;">
                     </div>
                 </div>
 
@@ -140,16 +165,25 @@
                 <div style="border-bottom:1px solid var(--border);padding:16px 0;">
                     <label style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px;display:block;font-family:var(--font-body);">Start time</label>
                     <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-                        <select name="start_hour" style="background:transparent;border:none;outline:none;color:var(--text-dim);font-family:var(--font-body);font-size:14px;font-weight:300;appearance:none;-webkit-appearance:none;">
+                        <select name="startTimeInput[hours]" style="background:transparent;border:none;outline:none;color:var(--text-dim);font-family:var(--font-body);font-size:14px;font-weight:300;appearance:none;-webkit-appearance:none;">
                             <option value="" disabled selected>Hour</option>
-                            <?php for($h = 12; $h <= 23; $h++) echo "<option value='$h'>" . sprintf('%02d', $h) . ":00</option>"; ?>
+                            <?php for($h = 10; $h <= 27; $h++) :
+                                $value = $h > 23 ? $h - 24 : $h;
+                                if ($h > 24) { $display = ($h-24).'am'; }
+                                elseif ($h == 24) { $display = 'Midnight'; }
+                                elseif ($h == 12) { $display = 'Noon'; }
+                                elseif ($h > 12) { $display = ($h-12).'pm'; }
+                                else { $display = $h.'am'; }
+                            ?>
+                                <option value="<?php echo $value; ?>"><?php echo $display; ?></option>
+                            <?php endfor; ?>
                         </select>
-                        <select name="start_mins" style="background:transparent;border:none;outline:none;color:var(--text-dim);font-family:var(--font-body);font-size:14px;font-weight:300;appearance:none;-webkit-appearance:none;">
+                        <select name="startTimeInput[minutes]" style="background:transparent;border:none;outline:none;color:var(--text-dim);font-family:var(--font-body);font-size:14px;font-weight:300;appearance:none;-webkit-appearance:none;">
                             <option value="" disabled selected>Minutes</option>
-                            <option value="00">:00</option>
-                            <option value="15">:15</option>
-                            <option value="30">:30</option>
-                            <option value="45">:45</option>
+                            <option value="0">00</option>
+                            <option value="15">15</option>
+                            <option value="30">30</option>
+                            <option value="45">45</option>
                         </select>
                     </div>
                 </div>
@@ -158,17 +192,25 @@
                 <div style="border-bottom:1px solid var(--border);padding:16px 0;">
                     <label style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px;display:block;font-family:var(--font-body);">Finish time</label>
                     <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-                        <select name="finish_hour" style="background:transparent;border:none;outline:none;color:var(--text-dim);font-family:var(--font-body);font-size:14px;font-weight:300;appearance:none;-webkit-appearance:none;">
+                        <select name="finishTimeInput[hours]" style="background:transparent;border:none;outline:none;color:var(--text-dim);font-family:var(--font-body);font-size:14px;font-weight:300;appearance:none;-webkit-appearance:none;">
                             <option value="" disabled selected>Hour</option>
-                            <?php for($h = 18; $h <= 23; $h++) echo "<option value='$h'>" . sprintf('%02d', $h) . ":00</option>"; ?>
-                            <?php for($h = 0; $h <= 3; $h++) echo "<option value='$h'>" . sprintf('%02d', $h) . ":00</option>"; ?>
+                            <?php for($h = 12; $h <= 30; $h++) :
+                                $value = $h > 23 ? $h - 24 : $h;
+                                if ($h > 24) { $display = ($h-24).'am'; }
+                                elseif ($h == 24) { $display = 'Midnight'; }
+                                elseif ($h == 12) { $display = 'Noon'; }
+                                elseif ($h > 12) { $display = ($h-12).'pm'; }
+                                else { $display = $h.'am'; }
+                            ?>
+                                <option value="<?php echo $value; ?>"><?php echo $display; ?></option>
+                            <?php endfor; ?>
                         </select>
-                        <select name="finish_mins" style="background:transparent;border:none;outline:none;color:var(--text-dim);font-family:var(--font-body);font-size:14px;font-weight:300;appearance:none;-webkit-appearance:none;">
+                        <select name="finishTimeInput[minutes]" style="background:transparent;border:none;outline:none;color:var(--text-dim);font-family:var(--font-body);font-size:14px;font-weight:300;appearance:none;-webkit-appearance:none;">
                             <option value="" disabled selected>Minutes</option>
-                            <option value="00">:00</option>
-                            <option value="15">:15</option>
-                            <option value="30">:30</option>
-                            <option value="45">:45</option>
+                            <option value="0">00</option>
+                            <option value="15">15</option>
+                            <option value="30">30</option>
+                            <option value="45">45</option>
                         </select>
                     </div>
                 </div>
@@ -176,15 +218,19 @@
                 <!-- Additional info -->
                 <div style="border-bottom:1px solid var(--border);padding:16px 0;">
                     <label style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px;display:block;font-family:var(--font-body);">Additional information</label>
-                    <textarea name="additional_info" placeholder="Tell us anything else about your event — music preferences, special requests, anything that would help us understand what you're looking for." style="background:transparent;border:none;outline:none;color:var(--text-bright);font-family:var(--font-body);font-size:14px;font-weight:300;width:100%;resize:none;min-height:80px;line-height:1.7;"></textarea>
+                    <textarea name="admin[notes]" maxlength="300"
+                              placeholder="Tell us anything else about your event — music preferences, special requests, anything that would help us understand what you're looking for."
+                              style="background:transparent;border:none;outline:none;color:var(--text-bright);font-family:var(--font-body);font-size:14px;font-weight:300;width:100%;resize:none;min-height:80px;line-height:1.7;"></textarea>
                 </div>
 
-                <!-- Footer -->
+                <!-- Hidden fields -->
+                <input type="hidden" name="admin[booking_type]" value="direct">
+                <input type="hidden" name="admin[status]" value="enquiry">
+                <input type="hidden" name="action" value="create">
+
+                <!-- reCAPTCHA + Submit -->
                 <div style="padding:28px 0 0;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
-                    <div style="font-size:11px;color:var(--text-dim);border:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;gap:12px;font-family:var(--font-body);">
-                        <div style="width:20px;height:20px;border:1px solid var(--border);flex-shrink:0;"></div>
-                        <span>I'm not a robot</span>
-                    </div>
+                    <div class="g-recaptcha" data-sitekey="<?php echo defined('GOOGLE_RECAPTCHA_SITEKEY') ? GOOGLE_RECAPTCHA_SITEKEY : ''; ?>"></div>
                     <button type="submit" style="background:var(--gold);color:var(--black);font-family:var(--font-mark);font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:14px 32px;border:none;cursor:pointer;white-space:nowrap;">Submit enquiry</button>
                 </div>
 
