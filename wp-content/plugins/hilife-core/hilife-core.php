@@ -88,10 +88,10 @@ add_action( 'template_redirect', function() {
     });
 });
 
-// ── TEMPLATE INCLUDE — Custom templates ──
 add_filter( 'template_include', function( $template ) {
-    if ( is_page() && !is_page('contact') ) {
-        $custom = get_template_directory() . '/templates/page.php';
+
+    if ( is_front_page() ) {
+        $custom = get_template_directory() . '/templates/front-page.php';
         if ( file_exists( $custom ) ) return $custom;
     }
     if ( is_home() ) {
@@ -104,6 +104,10 @@ add_filter( 'template_include', function( $template ) {
     }
     if ( is_page('contact') ) {
         $custom = get_template_directory() . '/templates/contact.php';
+        if ( file_exists( $custom ) ) return $custom;
+    }
+    if ( is_page() ) {
+        $custom = get_template_directory() . '/templates/page.php';
         if ( file_exists( $custom ) ) return $custom;
     }
     if ( is_tax( 'location' ) ) {
@@ -132,10 +136,6 @@ add_filter( 'template_include', function( $template ) {
     }
     if ( is_singular( 'djs' ) ) {
         $custom = get_template_directory() . '/templates/single-dj.php';
-        if ( file_exists( $custom ) ) return $custom;
-    }
-    if ( is_front_page() ) {
-        $custom = get_template_directory() . '/templates/front-page.php';
         if ( file_exists( $custom ) ) return $custom;
     }
 
