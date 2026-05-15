@@ -146,7 +146,7 @@ add_filter( 'template_include', function( $template ) {
 add_action( 'wp_enqueue_scripts', function() {
     wp_enqueue_style(
         'hilife-fonts',
-        'https://fonts.googleapis.com/css2?family=Lekton:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap',
+        'https://fonts.googleapis.com/css2?family=Lekton:wght@400;700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap',
         [],
         null
     );

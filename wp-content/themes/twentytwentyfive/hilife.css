@@ -6,17 +6,17 @@
     --gold:          #E3DD58;
     --gold-dim:      rgba(227,221,88,0.15);
     --gold-faint:    rgba(227,221,88,0.06);
-    --dark:          #2B2B29;
-    --black:         #0F0F0E;
-    --surface:       #1A1A18;
-    --surface2:      #222220;
-    --border:        #3A3A38;
-    --border-dim:    rgba(58,58,56,0.6);
-    --text:          #E8E4D8;
-    --text-dim:      #8A8880;
-    --text-bright:   #F5F2E8;
+    --dark:          #2A2520;
+    --black:         #1A1612;
+    --surface:       #221E1A;
+    --surface2:      #2C2824;
+    --border:        #3D3830;
+    --border-dim:    rgba(61,56,48,0.6);
+    --text:          #EDE8DC;
+    --text-dim:      #8F8880;
+    --text-bright:   #F7F2E8;
 
-    --font-display:  'Playfair Display', Georgia, serif;
+    --font-display:  'DM Serif Display', Georgia, serif;
     --font-body:     'DM Sans', sans-serif;
     --font-mark:     'Lekton', monospace;
 
@@ -56,7 +56,7 @@ body::after {
     position: fixed;
     inset: 0;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    opacity: 0.25;
+    opacity: 0.3;
     pointer-events: none;
     z-index: 9000;
 }
@@ -64,7 +64,7 @@ body::after {
 /* ── TYPOGRAPHY ── */
 h1, h2, h3, h4 {
     font-family: var(--font-display);
-    font-weight: 600;
+    font-weight: 400;
     line-height: 1.15;
     color: var(--text-bright);
     letter-spacing: -0.01em;
@@ -105,7 +105,7 @@ strong { font-weight: 500; color: var(--text-bright); }
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(15,15,14,0.95);
+    background: rgba(26,22,18,0.96);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
 }
@@ -179,8 +179,8 @@ strong { font-weight: 500; color: var(--text-bright); }
     background: var(--surface);
     border: 1px solid var(--border);
     border-top: 2px solid var(--gold);
-    min-width: 200px;
-    padding: var(--space-xs) 0;
+    min-width: 180px;
+    padding: 4px 0;
     opacity: 0;
     visibility: hidden;
     transform: translateY(8px);
@@ -203,8 +203,8 @@ strong { font-weight: 500; color: var(--text-bright); }
 
 .hilife-nav .sub-menu a {
     display: block;
-    padding: 8px 20px;
-    font-size: 0.68rem;
+    padding: 5px 16px;
+    font-size: 0.65rem;
     color: var(--text-dim);
     white-space: nowrap;
 }
@@ -385,7 +385,7 @@ strong { font-weight: 500; color: var(--text-bright); }
 .hilife-card-title {
     font-family: var(--font-display);
     font-size: 1.2rem;
-    font-weight: 600;
+    font-weight: 400;
     color: var(--text-bright);
     margin-bottom: var(--space-xs);
     line-height: 1.3;
