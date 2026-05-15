@@ -590,6 +590,19 @@ strong { font-weight: 500; color: var(--text-bright); }
     font-family: var(--font-body);
 }
 
+/* ── CONTENT GRIDS ── */
+.hilife-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+}
+
+.hilife-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
     :root {
@@ -664,6 +677,11 @@ strong { font-weight: 500; color: var(--text-bright); }
 
     .hilife-playlist {
         columns: 1;
+    }
+
+    .hilife-grid-3,
+    .hilife-grid-2 {
+        grid-template-columns: 1fr;
     }
 }
 

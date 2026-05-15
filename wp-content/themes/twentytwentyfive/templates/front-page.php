@@ -63,7 +63,7 @@ $feedback = new WP_Query([
     <!-- OCCASIONS -->
     <div style="padding:48px 40px;border-bottom:1px solid var(--border);">
         <div class="hilife-section-label">What's the occasion</div>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;">
+        <div class="hilife-grid-3">
         <?php foreach ( $occasions as $occasion ) :
             $image_field = get_field('occasion_hero_image', $occasion);
             $image = is_array($image_field) ? $image_field['url'] : $image_field;
@@ -91,7 +91,7 @@ $feedback = new WP_Query([
     <!-- WHAT WE DO -->
     <div style="padding:48px 40px;background:var(--surface);border-bottom:1px solid var(--border);">
         <div class="hilife-section-label">What we do</div>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;">
+        <div class="hilife-grid-3">
         <?php foreach ( $services as $service ) :
             $image_field = get_field('service_hero_image', $service);
             $image = is_array($image_field) ? $image_field['url'] : $image_field;
@@ -131,7 +131,7 @@ $feedback = new WP_Query([
     <!-- RECENT EVENTS -->
     <div style="padding:48px 40px;border-bottom:1px solid var(--border);">
         <div class="hilife-section-label">Recent events</div>
-        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:2px;">
+        <div class="hilife-grid-2">
         <?php if ( $events->have_posts() ) :
             while ( $events->have_posts() ) : $events->the_post();
                 $venue = get_field('venue_name', get_the_ID());
@@ -155,7 +155,7 @@ $feedback = new WP_Query([
     <!-- FEEDBACK -->
     <div style="padding:48px 40px;background:var(--surface);border-bottom:1px solid var(--border);">
         <div class="hilife-section-label">What people say</div>
-        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;">
+        <div class="hilife-grid-2" style="gap:16px;">
         <?php if ( $feedback->have_posts() ) :
             while ( $feedback->have_posts() ) : $feedback->the_post();
                 $dj = get_field('dj_name', get_the_ID());
@@ -198,7 +198,7 @@ $feedback = new WP_Query([
     </div>
 
     <!-- CTA STRIP -->
-    <div style="padding:40px;border-top:1px solid var(--border);background:var(--surface);display:flex;align-items:center;justify-content:space-between;gap:32px;">
+    <div style="padding:40px;border-top:1px solid var(--border);background:var(--surface);display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;">
         <div>
             <div style="font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);font-family:var(--font-body);margin-bottom:8px;">Planning an event?</div>
             <div style="font-family:var(--font-body);font-size:20px;font-weight:300;color:var(--text-bright);">Let's talk about <em style="font-style:italic;color:var(--gold);">your night</em></div>

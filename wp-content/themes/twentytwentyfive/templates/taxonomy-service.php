@@ -68,7 +68,7 @@ $feedback = new WP_Query([
     <!-- OCCASIONS THIS SERVICE SUITS -->
     <div style="padding:64px 40px;border-bottom:1px solid var(--border);">
         <div class="hilife-section-label"><?php echo esc_html($term->name); ?> for every occasion</div>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;">
+        <div class="hilife-grid-3">
         <?php foreach ( $occasions as $occasion ) :
             $occ_image_field = get_field('occasion_hero_image', $occasion);
             $occ_image = is_array($occ_image_field) ? $occ_image_field['url'] : $occ_image_field;

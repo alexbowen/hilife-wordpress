@@ -67,7 +67,7 @@ $feedback = new WP_Query([
     <!-- LOCATIONS FOR THIS OCCASION -->
     <div style="padding:64px 40px;border-bottom:1px solid var(--border);">
         <div class="hilife-section-label"><?php echo esc_html($term->name); ?> across the North</div>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;">
+        <div class="hilife-grid-3">
         <?php foreach ( $locations as $location ) :
             $loc_image_field = get_field('location_hero_image', $location);
             $loc_image = is_array($loc_image_field) ? $loc_image_field['url'] : $loc_image_field;
