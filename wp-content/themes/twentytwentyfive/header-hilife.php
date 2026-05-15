@@ -25,7 +25,7 @@ if ( defined('HILIFE_HEADER_FETCH') ) {
             <img src="<?php echo get_template_directory_uri(); ?>/assets/logo.png" alt="Hi-Life Entertainment">
             <span class="hilife-logo-text">Hi-Life Entertainment</span>
         </a>
-        <nav class="hilife-nav">
+        <nav class="hilife-nav" id="hilife-nav">
             <?php wp_nav_menu([
                 'theme_location' => 'primary',
                 'container'      => false,
@@ -33,11 +33,16 @@ if ( defined('HILIFE_HEADER_FETCH') ) {
                 'fallback_cb'    => false,
             ]); ?>
         </nav>
+        <button class="hilife-hamburger" id="hilife-hamburger" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </div>
 </header>
 
 <?php if ( !defined('HILIFE_HEADER_FETCH') && $is_authenticated ) : ?>
-<div style="background:var(--dark);border-bottom:1px solid var(--border);padding:0 40px;">
+<div class="hilife-subnav" style="background:var(--dark);border-bottom:1px solid var(--border);padding:0 40px;">
     <div style="display:flex;align-items:center;height:44px;gap:2rem;">
         <?php if ($is_admin) : ?>
             <a href="/admin/events" style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);text-decoration:none;">Admin</a>
@@ -53,3 +58,21 @@ if ( defined('HILIFE_HEADER_FETCH') ) {
     </div>
 </div>
 <?php endif; ?>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.getElementById('hilife-hamburger');
+    const nav = document.getElementById('hilife-nav');
+    if (!hamburger || !nav) return;
+    hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('is-active');
+        nav.classList.toggle('is-open');
+    });
+    document.addEventListener('click', function(e) {
+        if (!hamburger.contains(e.target) && !nav.contains(e.target)) {
+            hamburger.classList.remove('is-active');
+            nav.classList.remove('is-open');
+        }
+    });
+});
+</script>
