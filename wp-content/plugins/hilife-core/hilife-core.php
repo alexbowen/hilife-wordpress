@@ -90,6 +90,10 @@ add_action( 'template_redirect', function() {
 
 // ── TEMPLATE INCLUDE — Custom templates ──
 add_filter( 'template_include', function( $template ) {
+    if ( is_page() && !is_page('contact') ) {
+        $custom = get_template_directory() . '/templates/page.php';
+        if ( file_exists( $custom ) ) return $custom;
+    }
     if ( is_home() ) {
         $custom = get_template_directory() . '/templates/archive-blog.php';
         if ( file_exists( $custom ) ) return $custom;
