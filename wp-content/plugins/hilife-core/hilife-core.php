@@ -30,6 +30,10 @@ add_action( 'init', function() {
 
 }, 99 );
 
+add_action('wp_head', function() {
+    echo '<link rel="icon" href="' . get_template_directory_uri() . '/assets/favicon.png" type="image/png">';
+});
+
 // ── QUERY VARS ──
 add_filter( 'query_vars', function( $vars ) {
     $vars[] = 'occasion_slug';
