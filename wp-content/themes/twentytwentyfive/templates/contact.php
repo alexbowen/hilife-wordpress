@@ -10,7 +10,10 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
-<?php include( get_template_directory() . '/header-hilife.php' ); ?>
+<?php 
+define("GOOGLE_RECAPTCHA_SITEKEY", '6LcV-kolAAAAAFJHHRYPvwEEZ2nSpNKdDW2pW8JW');
+include( get_template_directory() . '/header-hilife.php' );
+?>
 
 <main class="hilife-main">
 
