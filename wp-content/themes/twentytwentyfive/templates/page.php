@@ -16,8 +16,16 @@
     <?php if ( have_posts() ) : the_post(); ?>
 
     <!-- HERO -->
-    <div style="padding:72px 40px 56px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;">
-        <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(227,221,88,0.04) 0%,transparent 60%);pointer-events:none;"></div>
+    <?php $has_image = has_post_thumbnail(); ?>
+    <div style="padding:72px 40px 56px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;<?php echo $has_image ? 'min-height:360px;display:flex;align-items:flex-end;' : ''; ?>">
+        <?php if ( $has_image ) : ?>
+            <div style="position:absolute;inset:0;">
+                <?php the_post_thumbnail('full', ['style' => 'width:100%;height:100%;object-fit:cover;display:block;']); ?>
+            </div>
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(26,22,18,0.97) 0%,rgba(26,22,18,0.5) 60%,rgba(26,22,18,0.2) 100%);"></div>
+        <?php else : ?>
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(227,221,88,0.04) 0%,transparent 60%);pointer-events:none;"></div>
+        <?php endif; ?>
         <div style="position:relative;max-width:700px;">
             <div class="hilife-eyebrow"><?php echo get_bloginfo('name'); ?></div>
             <h1 style="margin-bottom:0;"><?php the_title(); ?></h1>
