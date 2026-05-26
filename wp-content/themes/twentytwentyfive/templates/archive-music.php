@@ -23,7 +23,7 @@ $themes = new WP_Query([
 <main class="hilife-main">
 
     <!-- HERO -->
-    <div style="padding:72px 40px 64px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;">
+    <div style="padding:48px 40px 40px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;">
         <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(227,221,88,0.04) 0%,transparent 60%);pointer-events:none;"></div>
         <div style="position:relative;max-width:700px;">
             <div class="hilife-eyebrow">The music</div>
