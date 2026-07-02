@@ -14,8 +14,17 @@
 <main class="hilife-main">
 
     <!-- HERO -->
-    <div style="padding:72px 40px 56px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;">
-        <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(227,221,88,0.04) 0%,transparent 60%);pointer-events:none;"></div>
+    <?php $blog_page_id = get_option('page_for_posts');
+    $has_hero = $blog_page_id && has_post_thumbnail($blog_page_id); ?>
+    <div style="padding:72px 40px 56px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;<?php echo $has_hero ? 'min-height:360px;display:flex;align-items:flex-end;' : ''; ?>">
+        <?php if ( $has_hero ) : ?>
+            <div style="position:absolute;inset:0;">
+                <?php echo get_the_post_thumbnail($blog_page_id, 'full', ['style' => 'width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.5);']); ?>
+            </div>
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(26,22,18,0.97) 0%,rgba(26,22,18,0.7) 60%,rgba(26,22,18,0.4) 100%);"></div>
+        <?php else : ?>
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(249,112,102,0.04) 0%,transparent 60%);pointer-events:none;"></div>
+        <?php endif; ?>
         <div style="position:relative;max-width:700px;">
             <div class="hilife-eyebrow">Latest from Hi-Life</div>
             <h1 style="margin-bottom:12px;">Blog</h1>

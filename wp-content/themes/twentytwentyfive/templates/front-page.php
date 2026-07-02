@@ -46,8 +46,19 @@ $feedback = new WP_Query([
 <main class="hilife-main">
 
     <!-- HERO -->
-    <div style="padding:72px 40px 64px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;background:linear-gradient(135deg,var(--surface) 0%,var(--black) 60%,#1c1a0c 100%);">
-        <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 80% 50%,rgba(227,221,88,0.05) 0%,transparent 55%);pointer-events:none;"></div>
+<!-- HERO -->
+    <?php $has_hero = has_post_thumbnail( get_option('page_on_front') ); 
+    $hero_id = get_option('page_on_front');
+    ?>
+    <div style="padding:72px 40px 64px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;background:linear-gradient(135deg,var(--surface) 0%,var(--black) 60%,#1c1a0c 100%);<?php echo $has_hero ? 'min-height:420px;display:flex;align-items:flex-end;' : ''; ?>">
+        <?php if ( $has_hero ) : ?>
+            <div style="position:absolute;inset:0;">
+                <?php echo get_the_post_thumbnail($hero_id, 'full', ['style' => 'width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.5);']); ?>
+            </div>
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(26,22,18,0.97) 0%,rgba(26,22,18,0.7) 60%,rgba(26,22,18,0.4) 100%);"></div>
+        <?php else : ?>
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 80% 50%,rgba(249,112,102,0.05) 0%,transparent 55%);pointer-events:none;"></div>
+        <?php endif; ?>
         <div style="position:relative;max-width:620px;">
             <div class="hilife-eyebrow">Leeds & the North of England · Est. 2006</div>
             <p style="font-size:19px;color:var(--text);line-height:1.7;margin-bottom:12px;font-family:var(--font-display);font-weight:400;">

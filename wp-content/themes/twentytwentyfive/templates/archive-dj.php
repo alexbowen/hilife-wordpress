@@ -23,12 +23,23 @@ $djs = new WP_Query([
 <main class="hilife-main">
 
     <!-- HERO -->
-    <div style="padding:48px 40px 40px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;">
-        <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(227,221,88,0.04) 0%,transparent 60%);pointer-events:none;"></div>
+    <?php 
+    $dj_page = get_page_by_path('djs');
+    $has_hero = $dj_page && has_post_thumbnail($dj_page->ID);
+    ?>
+    <div style="padding:72px 40px 56px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;<?php echo $has_hero ? 'min-height:360px;display:flex;align-items:flex-end;' : ''; ?>">
+        <?php if ( $has_hero ) : ?>
+            <div style="position:absolute;inset:0;">
+                <?php echo get_the_post_thumbnail($dj_page->ID, 'full', ['style' => 'width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.5);']); ?>
+            </div>
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(26,22,18,0.97) 0%,rgba(26,22,18,0.7) 60%,rgba(26,22,18,0.4) 100%);"></div>
+        <?php else : ?>
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(249,112,102,0.04) 0%,transparent 60%);pointer-events:none;"></div>
+        <?php endif; ?>
         <div style="position:relative;max-width:700px;">
             <div class="hilife-eyebrow">The roster</div>
             <h1 style="margin-bottom:16px;">Our DJs</h1>
-            <p class="hilife-intro">A hand-picked roster of experienced DJs who genuinely love music. Every one of them chosen for their knowledge, their ability to read a room and their commitment to making your night the one people talk about.</p>
+            <p style="font-size:1rem;line-height:1.8;color:var(--text-dim);max-width:560px;margin-bottom:0;">A hand-picked roster of experienced DJs who genuinely love music. Every one of them chosen for their knowledge, their ability to read a room and their commitment to making your night the one people talk about.</p>
         </div>
     </div>
 
