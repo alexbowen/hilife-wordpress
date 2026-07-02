@@ -51,7 +51,7 @@ $feedback = new WP_Query([
     <!-- HERO -->
     <div style="padding:72px 40px 64px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;<?php echo $image ? 'min-height:360px;display:flex;align-items:flex-end;' : ''; ?>">
         <?php if ( $image ) : ?>
-            <div style="position:absolute;inset:0;background-image:url('<?php echo esc_url($image); ?>');background-size:cover;background-position:center;"></div>
+            <div style="position:absolute;inset:0;background-image:url('<?php echo esc_url($image); ?>');background-size:cover;background-position:center;filter:brightness(0.6);"></div>
             <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(15,15,14,0.97) 0%,rgba(15,15,14,0.5) 60%,rgba(15,15,14,0.2) 100%);"></div>
         <?php else : ?>
             <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(227,221,88,0.04) 0%,transparent 60%);pointer-events:none;"></div>
@@ -77,7 +77,7 @@ $feedback = new WP_Query([
             <a href="<?php echo esc_url($intersection_url); ?>"
                style="position:relative;overflow:hidden;aspect-ratio:3/2;display:block;border:1px solid var(--border);text-decoration:none;">
                 <?php if ( $occ_image ) : ?>
-                    <div style="position:absolute;inset:0;background-image:url('<?php echo esc_url($occ_image); ?>');background-size:cover;background-position:center;transition:transform 0.5s ease;"></div>
+                    <div style="position:absolute;inset:0;background-image:url('<?php echo esc_url($occ_image); ?>');background-size:cover;background-position:center;filter:brightness(0.6);transition:transform 0.5s ease;"></div>
                 <?php else : ?>
                     <div style="position:absolute;inset:0;background:var(--surface);"></div>
                 <?php endif; ?>

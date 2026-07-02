@@ -71,7 +71,7 @@ $feedback = new WP_Query([
         ?>
             <a href="<?php echo esc_url($link); ?>" style="position:relative;overflow:hidden;aspect-ratio:16/9;display:block;border:1px solid var(--border);text-decoration:none;">
                 <?php if ( $image ) : ?>
-                    <div style="position:absolute;inset:0;background-image:url('<?php echo esc_url($image); ?>');background-size:cover;background-position:center;transition:transform 0.5s ease;"></div>
+                    <div style="position:absolute;inset:0;background-image:url('<?php echo esc_url($image); ?>');background-size:cover;background-position:center;filter:brightness(0.6);transition:transform 0.5s ease;"></div>
                 <?php else : ?>
                     <div style="position:absolute;inset:0;background:var(--surface);display:flex;align-items:center;justify-content:center;">
                         <span style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--border);font-family:var(--font-body);">Add occasion image</span>
@@ -101,7 +101,7 @@ $feedback = new WP_Query([
                onmouseover="this.style.borderColor='rgba(227,221,88,0.3)'"
                onmouseout="this.style.borderColor='var(--border)'">
                 <?php if ( $image ) : ?>
-                    <div style="position:absolute;inset:0;background-image:url('<?php echo esc_url($image); ?>');background-size:cover;background-position:center;opacity:0.25;"></div>
+                    <div style="position:absolute;inset:0;background-image:url('<?php echo esc_url($image); ?>');background-size:cover;background-position:center;filter:brightness(0.6);opacity:0.25;"></div>
                     <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,22,18,0.9) 0%,rgba(26,22,18,0.6) 100%);"></div>
                 <?php endif; ?>
                 <div style="position:relative;">

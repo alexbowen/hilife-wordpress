@@ -93,7 +93,7 @@ $hero_image = $landing ? get_field('landing_hero_image', $landing->ID) : null;
 ?>
 <div class="hilife-hero" <?php if ( $hero_image ) : ?>style="position:relative;min-height:460px;display:flex;align-items:flex-end;" <?php endif; ?>>
     <?php if ( $hero_image ) : ?>
-        <div style="position:absolute;inset:0;background-image:url('<?php echo esc_url($hero_image['url']); ?>');background-size:cover;background-position:center;"></div>
+        <div style="position:absolute;inset:0;background-image:url('<?php echo esc_url($hero_image['url']); ?>');background-size:cover;background-position:center;filter:brightness(0.6);"></div>
         <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(15,15,14,0.95) 0%, rgba(15,15,14,0.4) 60%, rgba(15,15,14,0.2) 100%);"></div>
     <?php endif; ?>
     <div class="hilife-hero-inner" style="position:relative;z-index:1;<?php if ( $hero_image ) : ?>padding-bottom:var(--space-lg);<?php endif; ?>">
