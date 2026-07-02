@@ -3,18 +3,23 @@
    ============================================================ */
 
 :root {
-    --gold:          #E3DD58;
-    --gold-dim:      rgba(227,221,88,0.15);
-    --gold-faint:    rgba(227,221,88,0.06);
-    --dark:          #2A2520;
-    --black:         #1A1612;
-    --surface:       #221E1A;
-    --surface2:      #2C2824;
-    --border:        #3D3830;
-    --border-dim:    rgba(61,56,48,0.6);
-    --text:          #EDE8DC;
-    --text-dim:      #8F8880;
-    --text-bright:   #F7F2E8;
+    --gold:           #E3DD58;
+    --accent:         #F97066;
+    --accent-dim:     rgba(249,112,102,0.2);
+    --accent-faint:   rgba(249,112,102,0.06);
+    --dark:           #2A2520;
+    --black:          #1A1612;
+    --surface:        #221E1A;
+    --surface2:       #2C2824;
+    --panel:          #2E2924;
+    --panel-border:   #4A443C;
+    --panel-text:     #F0EBE0;
+    --panel-text-dim: #C8C0B4;
+    --border:         #3D3830;
+    --border-dim:     rgba(61,56,48,0.6);
+    --text:           #EDE8DC;
+    --text-dim:       #8F8880;
+    --text-bright:    #F7F2E8;
 
     --font-display:  'DM Serif Display', Georgia, serif;
     --font-body:     'DM Sans', sans-serif;
@@ -38,7 +43,7 @@
 }
 
 html {
-    font-size: 17px;
+    font-size: 19px;
     scroll-behavior: smooth;
 }
 
@@ -80,7 +85,7 @@ p {
 }
 
 a {
-    color: var(--gold);
+    color: var(--accent);
     text-decoration: none;
     transition: opacity 0.2s ease;
 }
@@ -164,7 +169,7 @@ strong { font-weight: 500; color: var(--text-bright); }
 .hilife-nav a:hover,
 .hilife-nav .current-menu-item > a,
 .hilife-nav .current-menu-ancestor > a {
-    color: var(--gold);
+    color: var(--accent);
     opacity: 1;
 }
 
@@ -178,7 +183,7 @@ strong { font-weight: 500; color: var(--text-bright); }
     left: 0;
     background: var(--surface);
     border: 1px solid var(--border);
-    border-top: 2px solid var(--gold);
+    border-top: 2px solid var(--accent);
     min-width: 180px;
     padding: 4px 0;
     opacity: 0;
@@ -210,9 +215,47 @@ strong { font-weight: 500; color: var(--text-bright); }
 }
 
 .hilife-nav .sub-menu a:hover {
-    color: var(--gold);
-    background: var(--gold-faint);
+    color: var(--accent);
+    background: var(--accent-faint);
     opacity: 1;
+}
+
+/* ── HAMBURGER ── */
+.hilife-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    flex-shrink: 0;
+}
+
+.hilife-hamburger span {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: var(--text-dim);
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+.hilife-hamburger.is-active span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+    background: var(--accent);
+}
+
+.hilife-hamburger.is-active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hilife-hamburger.is-active span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+    background: var(--accent);
 }
 
 /* ── FOOTER ── */
@@ -256,7 +299,7 @@ strong { font-weight: 500; color: var(--text-bright); }
     font-weight: 500;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--gold);
+    color: var(--accent);
     margin-bottom: var(--space-sm);
 }
 
@@ -275,7 +318,7 @@ strong { font-weight: 500; color: var(--text-bright); }
 }
 
 .hilife-footer-col ul a:hover {
-    color: var(--gold);
+    color: var(--accent);
     opacity: 1;
 }
 
@@ -296,7 +339,7 @@ strong { font-weight: 500; color: var(--text-bright); }
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 30% 50%, rgba(227,221,88,0.05) 0%, transparent 60%);
+    background: radial-gradient(ellipse at 30% 50%, rgba(249,112,102,0.05) 0%, transparent 60%);
     pointer-events: none;
 }
 
@@ -308,7 +351,7 @@ strong { font-weight: 500; color: var(--text-bright); }
     font-size: 0.65rem;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: var(--gold);
+    color: var(--accent);
     margin-bottom: var(--space-sm);
     display: flex;
     align-items: center;
@@ -320,7 +363,7 @@ strong { font-weight: 500; color: var(--text-bright); }
     content: '';
     width: 24px;
     height: 1px;
-    background: var(--gold);
+    background: var(--accent);
     flex-shrink: 0;
 }
 
@@ -342,7 +385,7 @@ strong { font-weight: 500; color: var(--text-bright); }
 }
 
 .hilife-card:hover {
-    border-color: rgba(227,221,88,0.3);
+    border-color: rgba(249,112,102,0.3);
 }
 
 .hilife-card-image {
@@ -398,7 +441,7 @@ strong { font-weight: 500; color: var(--text-bright); }
 }
 
 .hilife-card-title a:hover {
-    color: var(--gold);
+    color: var(--accent);
     opacity: 1;
 }
 
@@ -417,7 +460,7 @@ strong { font-weight: 500; color: var(--text-bright); }
     font-size: 0.65rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--gold);
+    color: var(--accent);
     margin-top: var(--space-sm);
     transition: gap 0.2s ease;
 }
@@ -438,8 +481,9 @@ strong { font-weight: 500; color: var(--text-bright); }
 }
 
 .hilife-event {
-    padding: var(--space-sm) 0;
-    border-bottom: 1px solid var(--border-dim);
+    padding: var(--space-sm) 16px;
+    border-bottom: 1px solid var(--panel-border);
+    background: var(--panel);
     display: flex;
     align-items: flex-start;
     gap: var(--space-md);
@@ -452,14 +496,14 @@ strong { font-weight: 500; color: var(--text-bright); }
 .hilife-event-venue {
     font-size: 0.95rem;
     font-weight: 500;
-    color: var(--text-bright);
+    color: var(--panel-text);
     line-height: 1.4;
     font-family: var(--font-body);
 }
 
 .hilife-event-desc {
     font-size: 0.82rem;
-    color: var(--text-dim);
+    color: var(--panel-text-dim);
     margin-top: 4px;
     margin-bottom: 0;
     font-family: var(--font-body);
@@ -469,7 +513,7 @@ strong { font-weight: 500; color: var(--text-bright); }
 .hilife-divider {
     width: 48px;
     height: 1px;
-    background: linear-gradient(to right, var(--gold), transparent);
+    background: linear-gradient(to right, var(--accent), transparent);
     margin: var(--space-md) 0;
 }
 
@@ -478,7 +522,7 @@ strong { font-weight: 500; color: var(--text-bright); }
     font-size: 0.62rem;
     letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: var(--gold);
+    color: var(--accent);
     margin-bottom: var(--space-sm);
     display: flex;
     align-items: center;
@@ -490,7 +534,7 @@ strong { font-weight: 500; color: var(--text-bright); }
     content: '';
     width: 20px;
     height: 1px;
-    background: var(--gold);
+    background: var(--accent);
 }
 
 /* ── PLAYLIST ── */
@@ -503,15 +547,17 @@ strong { font-weight: 500; color: var(--text-bright); }
 
 .hilife-playlist li {
     font-size: 0.78rem;
-    color: var(--text-dim);
-    padding: 5px 0;
-    border-bottom: 1px solid var(--border-dim);
+    color: var(--panel-text);
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--panel-border);
+    background: var(--panel);
     break-inside: avoid;
 }
 
 .hilife-playlist li::before {
     content: '— ';
-    color: var(--gold);
+    color: var(--accent);
+    opacity: 0.6;
 }
 
 /* ── INTRO TEXT ── */
@@ -565,42 +611,61 @@ strong { font-weight: 500; color: var(--text-bright); }
     gap: 2px;
 }
 
-/* ── HAMBURGER ── */
-.hilife-hamburger {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    gap: 5px;
-    width: 32px;
-    height: 32px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 4px;
-    flex-shrink: 0;
+/* ── WP CONTENT STYLES ── */
+.hilife-main h2 {
+    margin-top: var(--space-lg);
+    margin-bottom: var(--space-sm);
 }
 
-.hilife-hamburger span {
-    display: block;
+.hilife-main h3 {
+    margin-top: var(--space-md);
+    margin-bottom: var(--space-xs);
+}
+
+.hilife-main ul,
+.hilife-main ol {
+    padding-left: var(--space-md);
+    margin-bottom: var(--space-sm);
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    line-height: 1.8;
+}
+
+.hilife-main li {
+    margin-bottom: 6px;
+}
+
+.hilife-main table {
     width: 100%;
-    height: 1px;
-    background: var(--text-dim);
-    transition: all 0.3s ease;
-    transform-origin: center;
+    border-collapse: collapse;
+    margin-bottom: var(--space-md);
+    font-size: 0.85rem;
 }
 
-.hilife-hamburger.is-active span:nth-child(1) {
-    transform: translateY(6px) rotate(45deg);
-    background: var(--gold);
+.hilife-main th {
+    text-align: left;
+    padding: 10px 16px;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border-bottom: 1px solid var(--border);
+    font-family: var(--font-body);
+    font-weight: 500;
 }
 
-.hilife-hamburger.is-active span:nth-child(2) {
-    opacity: 0;
+.hilife-main td {
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border-dim);
+    color: var(--text-dim);
 }
 
-.hilife-hamburger.is-active span:nth-child(3) {
-    transform: translateY(-6px) rotate(-45deg);
-    background: var(--gold);
+.hilife-main code {
+    font-family: var(--font-mark);
+    font-size: 0.8rem;
+    color: var(--accent);
+    background: var(--surface2);
+    padding: 2px 6px;
 }
 
 /* ── RESPONSIVE ── */
