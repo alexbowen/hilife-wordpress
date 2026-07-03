@@ -61,9 +61,9 @@ $feedback = new WP_Query([
         <?php endif; ?>
         <div style="position:relative;max-width:620px;">
             <div class="hilife-eyebrow">Leeds & the North of England · Est. 2006</div>
-            <p style="font-size:19px;color:var(--text);line-height:1.7;margin-bottom:12px;font-family:var(--font-display);font-weight:400;">
-                Professional DJ hire for <em style="font-style:italic;color:var(--gold);">weddings,</em> corporate events and private parties — music that actually fits your night.
-            </p>
+<p style="font-size:clamp(1.8rem, 3.5vw, 2.4rem);color:var(--text-bright);line-height:1.3;margin-bottom:16px;font-family:var(--font-display);font-weight:400;">
+    Professional DJ hire for weddings, corporate events and private parties — music that actually fits your night.
+</p>
             <p style="font-size:13px;color:var(--text-dim);line-height:1.8;margin-bottom:32px;font-family:var(--font-body);font-weight:300;max-width:480px;">
                 Based in Leeds, covering the North of England since 2006. A roster of experienced DJs who genuinely love music and know how to read a room.
             </p>
