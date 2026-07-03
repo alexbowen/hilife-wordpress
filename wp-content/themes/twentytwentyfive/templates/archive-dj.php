@@ -45,7 +45,7 @@ $djs = new WP_Query([
 
     <!-- DJ GRID -->
     <div style="padding:64px 40px;">
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2px;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;">
         <?php if ( $djs->have_posts() ) :
             while ( $djs->have_posts() ) : $djs->the_post();
                 $summary   = get_field('dj_summary', get_the_ID());
@@ -53,7 +53,7 @@ $djs = new WP_Query([
                 $link_text = get_field('dj_link_text', get_the_ID());
         ?>
             <a href="<?php the_permalink(); ?>" style="display:block;background:var(--surface);border:1px solid var(--border);text-decoration:none;transition:border-color 0.3s;"
-               onmouseover="this.style.borderColor='rgba(227,221,88,0.3)'"
+               onmouseover="this.style.borderColor='rgba(20,184,166,0.3)'"
                onmouseout="this.style.borderColor='var(--border)'">
                 <?php if ( has_post_thumbnail() ) : ?>
                     <div style="aspect-ratio:1/1;overflow:hidden;background:var(--surface2);">
@@ -69,7 +69,7 @@ $djs = new WP_Query([
                     <?php if ($summary) : ?>
                         <p style="font-size:12px;color:var(--text-dim);line-height:1.7;font-family:var(--font-body);font-weight:300;margin-bottom:16px;"><?php echo esc_html($summary); ?></p>
                     <?php endif; ?>
-                    <span style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);font-family:var(--font-body);">Read more →</span>
+                    <span style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);font-family:var(--font-body);">Read more →</span>
                 </div>
             </a>
         <?php endwhile;
@@ -81,8 +81,8 @@ $djs = new WP_Query([
     <!-- CTA STRIP -->
     <div style="padding:48px 40px;border-top:1px solid var(--border);background:var(--surface);display:flex;align-items:center;justify-content:space-between;gap:32px;">
         <div>
-            <div style="font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);font-family:var(--font-body);margin-bottom:8px;">Planning an event?</div>
-            <div style="font-family:var(--font-display);font-size:22px;font-weight:600;color:var(--text-bright);">Let's talk about <em style="font-style:italic;color:var(--gold);">your night</em></div>
+            <div style="font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);font-family:var(--font-body);margin-bottom:8px;">Planning an event?</div>
+            <div style="font-family:var(--font-display);font-size:22px;font-weight:600;color:var(--text-bright);">Let's talk about <em style="font-style:italic;color:var(--accent);">your night</em></div>
         </div>
         <a href="/contact" style="display:inline-block;background:var(--gold);color:var(--black);font-family:var(--font-mark);font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:13px 28px;text-decoration:none;white-space:nowrap;">Get in touch</a>
     </div>

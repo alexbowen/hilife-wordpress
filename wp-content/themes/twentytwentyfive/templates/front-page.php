@@ -102,34 +102,6 @@ $has_hero = $home_page_id && has_post_thumbnail($home_page_id);
         </div>
     </div>
 
-    <!-- WHAT WE DO -->
-    <div style="padding:48px 40px;background:var(--surface);border-bottom:1px solid var(--border);">
-        <div class="hilife-section-label">What we do</div>
-        <div class="hilife-grid-3">
-        <?php foreach ( $services as $service ) :
-            $image_field = get_field('service_hero_image', $service);
-            $image = is_array($image_field) ? $image_field['url'] : $image_field;
-            $link  = get_term_link($service);
-        ?>
-            <a href="<?php echo esc_url($link); ?>" style="position:relative;overflow:hidden;border:1px solid var(--panel-border);background:var(--panel);min-height:180px;display:block;text-decoration:none;transition:border-color 0.3s;padding:28px 26px;"
-               onmouseover="this.style.borderColor='var(--accent)'"
-               onmouseout="this.style.borderColor='var(--panel-border)'">
-                <?php if ( $image ) : ?>
-                    <div style="position:absolute;inset:0;background-image:url('<?php echo esc_url($image); ?>');background-size:cover;background-position:center;opacity:0.2;filter:brightness(0.6);"></div>
-                    <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,22,18,0.92) 0%,rgba(26,22,18,0.7) 100%);"></div>
-                <?php endif; ?>
-                <div style="position:relative;">
-                    <div style="font-family:var(--font-display);font-size:19px;font-weight:400;color:var(--text-bright);margin-bottom:8px;"><?php echo esc_html($service->name); ?></div>
-                    <?php if ( $service->description ) : ?>
-                        <div style="font-size:13px;color:var(--text-dim);line-height:1.7;font-family:var(--font-body);font-weight:300;margin-bottom:16px;"><?php echo esc_html($service->description); ?></div>
-                    <?php endif; ?>
-                    <span style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);font-family:var(--font-body);">Find out more →</span>
-                </div>
-            </a>
-        <?php endforeach; ?>
-        </div>
-    </div>
-
     <!-- LOCATIONS -->
     <div style="padding:32px 40px;background:var(--dark);border-bottom:1px solid var(--border);">
         <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
@@ -142,6 +114,38 @@ $has_hero = $home_page_id && has_post_thumbnail($home_page_id);
                     <?php echo esc_html($loc->name); ?>
                 </a>
             <?php endforeach; ?>
+        </div>
+    </div>
+
+    <!-- WHAT WE DO -->
+    <div style="padding:48px 40px;background:var(--surface);border-bottom:1px solid var(--border);">
+        <div class="hilife-section-label">What we do</div>
+        <div class="hilife-grid-3">
+        <?php foreach ( $services as $service ) :
+            $image_field = get_field('service_hero_image', $service);
+            $image = is_array($image_field) ? $image_field['url'] : $image_field;
+            $link  = get_term_link($service);
+        ?>
+            <a href="<?php echo esc_url($link); ?>" style="position:relative;overflow:hidden;aspect-ratio:4/3;display:block;border:1px solid var(--panel-border);background:var(--panel);text-decoration:none;transition:border-color 0.3s;"
+               onmouseover="this.style.borderColor='var(--accent)'"
+               onmouseout="this.style.borderColor='var(--panel-border)'">
+                <?php if ( $image ) : ?>
+                    <div style="position:absolute;inset:0;background-image:url('<?php echo esc_url($image); ?>');background-size:cover;background-position:center;filter:brightness(0.55);transition:filter 0.4s;"></div>
+                <?php else : ?>
+                    <div style="position:absolute;inset:0;background:var(--panel);display:flex;align-items:center;justify-content:center;">
+                        <span style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--border);font-family:var(--font-body);">Add service image</span>
+                    </div>
+                <?php endif; ?>
+                <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(26,22,18,0.97) 0%,rgba(26,22,18,0.4) 60%,transparent 100%);"></div>
+                <div style="position:absolute;bottom:0;left:0;right:0;padding:24px;">
+                    <div style="font-family:var(--font-display);font-size:22px;font-weight:400;color:var(--text-bright);margin-bottom:6px;"><?php echo esc_html($service->name); ?></div>
+                    <?php if ( $service->description ) : ?>
+                        <div style="font-size:13px;color:var(--text-dim);line-height:1.6;font-family:var(--font-body);font-weight:300;margin-bottom:14px;"><?php echo esc_html($service->description); ?></div>
+                    <?php endif; ?>
+                    <span style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);font-family:var(--font-body);">Find out more →</span>
+                </div>
+            </a>
+        <?php endforeach; ?>
         </div>
     </div>
 
@@ -191,6 +195,13 @@ $has_hero = $home_page_id && has_post_thumbnail($home_page_id);
         </div>
     </div>
 
+    <!-- PHOTOGRAPHY PLACEHOLDER -->
+    <div style="padding:48px 40px;border-bottom:1px solid var(--border);">
+        <div style="background:var(--panel);border:1px dashed var(--panel-border);min-height:200px;display:flex;align-items:center;justify-content:center;">
+            <span style="font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);font-family:var(--font-body);">Photography coming soon</span>
+        </div>
+    </div>
+
     <!-- MUSIC -->
     <div style="padding:48px 40px;border-bottom:1px solid var(--border);">
         <div class="hilife-section-label">The music</div>
@@ -211,6 +222,13 @@ $has_hero = $home_page_id && has_post_thumbnail($home_page_id);
                 <?php endforeach; ?>
                 <a href="/music" style="font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(20,184,166,0.3);padding:7px 16px;font-family:var(--font-body);text-decoration:none;">+ more →</a>
             </div>
+        </div>
+    </div>
+
+    <!-- PHOTOGRAPHY PLACEHOLDER -->
+    <div style="padding:48px 40px;border-bottom:1px solid var(--border);">
+        <div style="background:var(--panel);border:1px dashed var(--panel-border);min-height:200px;display:flex;align-items:center;justify-content:center;">
+            <span style="font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);font-family:var(--font-body);">Photography coming soon</span>
         </div>
     </div>
 

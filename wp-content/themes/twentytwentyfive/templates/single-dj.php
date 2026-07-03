@@ -20,7 +20,7 @@
 
     <!-- HERO -->
     <div style="padding:72px 40px 64px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;">
-        <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(227,221,88,0.04) 0%,transparent 60%);pointer-events:none;"></div>
+        <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(20,184,166,0.04) 0%,transparent 60%);pointer-events:none;"></div>
         <div style="position:relative;display:grid;grid-template-columns:200px 1fr;gap:48px;align-items:start;max-width:900px;">
             <?php if ( has_post_thumbnail() ) : ?>
                 <div style="aspect-ratio:1/1;overflow:hidden;border:1px solid var(--border);">
@@ -39,7 +39,7 @@
                 <?php endif; ?>
                 <?php if ($link_url) : ?>
                     <a href="<?php echo esc_url($link_url); ?>" target="_blank"
-                       style="display:inline-block;margin-top:16px;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(227,221,88,0.3);padding:10px 20px;font-family:var(--font-body);text-decoration:none;">
+                       style="display:inline-block;margin-top:16px;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(20,184,166,0.3);padding:10px 20px;font-family:var(--font-body);text-decoration:none;">
                         <?php echo esc_html($link_text ?: 'Listen'); ?> →
                     </a>
                 <?php endif; ?>

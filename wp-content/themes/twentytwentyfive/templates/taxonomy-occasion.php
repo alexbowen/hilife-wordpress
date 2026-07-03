@@ -53,7 +53,7 @@ $feedback = new WP_Query([
             <div style="position:absolute;inset:0;background-image:url('<?php echo esc_url($image); ?>');background-size:cover;background-position:center;filter:brightness(0.6);"></div>
             <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(15,15,14,0.97) 0%,rgba(15,15,14,0.5) 60%,rgba(15,15,14,0.2) 100%);"></div>
         <?php else : ?>
-            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(227,221,88,0.04) 0%,transparent 60%);pointer-events:none;"></div>
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(20,184,166,0.04) 0%,transparent 60%);pointer-events:none;"></div>
         <?php endif; ?>
         <div style="position:relative;max-width:700px;">
             <div class="hilife-eyebrow">Occasion</div>
@@ -81,10 +81,10 @@ $feedback = new WP_Query([
                     <div style="position:absolute;inset:0;background:var(--surface);"></div>
                 <?php endif; ?>
                 <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(15,15,14,0.95) 0%,rgba(15,15,14,0.3) 70%,transparent 100%);"></div>
-                <div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform 0.3s;"></div>
+                <div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform 0.3s;"></div>
                 <div style="position:absolute;bottom:0;left:0;right:0;padding:20px 22px;">
                     <div style="font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--text-bright);margin-bottom:4px;"><?php echo esc_html($location->name); ?></div>
-                    <div style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);font-family:var(--font-body);"><?php echo esc_html($term->name); ?> →</div>
+                    <div style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);font-family:var(--font-body);"><?php echo esc_html($term->name); ?> →</div>
                 </div>
             </a>
         <?php endforeach; ?>
@@ -141,8 +141,8 @@ $feedback = new WP_Query([
     <!-- CTA STRIP -->
     <div style="padding:48px 40px;border-top:1px solid var(--border);background:var(--surface);display:flex;align-items:center;justify-content:space-between;gap:32px;">
         <div>
-            <div style="font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);font-family:var(--font-body);margin-bottom:8px;">Planning a <?php echo esc_html(strtolower($term->name)); ?>?</div>
-            <div style="font-family:var(--font-display);font-size:22px;font-weight:600;color:var(--text-bright);">Let's talk about <em style="font-style:italic;color:var(--gold);">your night</em></div>
+            <div style="font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);font-family:var(--font-body);margin-bottom:8px;">Planning a <?php echo esc_html(strtolower($term->name)); ?>?</div>
+            <div style="font-family:var(--font-display);font-size:22px;font-weight:600;color:var(--text-bright);">Let's talk about <em style="font-style:italic;color:var(--accent);">your night</em></div>
         </div>
         <a href="/contact" style="display:inline-block;background:var(--gold);color:var(--black);font-family:var(--font-mark);font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:13px 28px;text-decoration:none;white-space:nowrap;">Get in touch</a>
     </div>

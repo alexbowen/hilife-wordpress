@@ -35,10 +35,10 @@
     <!-- POSTS -->
     <div style="padding:64px 40px;">
         <?php if ( have_posts() ) : ?>
-            <div style="display:flex;flex-direction:column;gap:2px;">
+            <div style="display:flex;flex-direction:column;gap:12px;">
             <?php while ( have_posts() ) : the_post(); ?>
                 <article style="background:var(--surface);border:1px solid var(--border);padding:36px 40px;transition:border-color 0.3s;"
-                         onmouseover="this.style.borderColor='rgba(227,221,88,0.3)'"
+                         onmouseover="this.style.borderColor='rgba(20,184,166,0.3)'"
                          onmouseout="this.style.borderColor='var(--border)'">
                     <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:32px;">
                         <div style="flex:1;">
@@ -47,11 +47,11 @@
                             </div>
                             <h2 style="font-family:var(--font-display);font-size:1.4rem;font-weight:600;color:var(--text-bright);margin-bottom:12px;line-height:1.3;">
                                 <a href="<?php the_permalink(); ?>" style="color:inherit;text-decoration:none;transition:color 0.2s;"
-                                   onmouseover="this.style.color='var(--gold)'"
+                                   onmouseover="this.style.color='var(--accent)'"
                                    onmouseout="this.style.color='var(--text-bright)'"><?php the_title(); ?></a>
                             </h2>
                             <p style="font-size:13px;color:var(--text-dim);line-height:1.8;margin-bottom:20px;max-width:680px;"><?php echo wp_trim_words(get_the_excerpt(), 30); ?></p>
-                            <a href="<?php the_permalink(); ?>" style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);font-family:var(--font-body);text-decoration:none;">Read more →</a>
+                            <a href="<?php the_permalink(); ?>" style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);font-family:var(--font-body);text-decoration:none;">Read more →</a>
                         </div>
                         <?php if ( has_post_thumbnail() ) : ?>
                             <div style="width:180px;height:120px;flex-shrink:0;overflow:hidden;border:1px solid var(--border);">
@@ -82,8 +82,8 @@
     <!-- CTA STRIP -->
     <div style="padding:48px 40px;border-top:1px solid var(--border);background:var(--surface);display:flex;align-items:center;justify-content:space-between;gap:32px;">
         <div>
-            <div style="font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);font-family:var(--font-body);margin-bottom:8px;">Planning an event?</div>
-            <div style="font-family:var(--font-display);font-size:22px;font-weight:600;color:var(--text-bright);">Let's talk about <em style="font-style:italic;color:var(--gold);">your night</em></div>
+            <div style="font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);font-family:var(--font-body);margin-bottom:8px;">Planning an event?</div>
+            <div style="font-family:var(--font-display);font-size:22px;font-weight:600;color:var(--text-bright);">Let's talk about <em style="font-style:italic;color:var(--accent);">your night</em></div>
         </div>
         <a href="/contact" style="display:inline-block;background:var(--gold);color:var(--black);font-family:var(--font-mark);font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:13px 28px;text-decoration:none;white-space:nowrap;">Get in touch</a>
     </div>

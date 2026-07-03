@@ -9,11 +9,11 @@
             <div style="display:flex;gap:16px;margin-top:16px;">
                 <a href="https://www.facebook.com/hilifeentertainmentleeds" target="_blank" rel="noopener"
                    style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);text-decoration:none;transition:color 0.2s;"
-                   onmouseover="this.style.color='var(--gold)'"
+                   onmouseover="this.style.color='var(--accent)'"
                    onmouseout="this.style.color='var(--text-dim)'">Facebook</a>
                 <a href="https://www.instagram.com/hilifeentertainmentleeds/" target="_blank" rel="noopener"
                    style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);text-decoration:none;transition:color 0.2s;"
-                   onmouseover="this.style.color='var(--gold)'"
+                   onmouseover="this.style.color='var(--accent)'"
                    onmouseout="this.style.color='var(--text-dim)'">Instagram</a>
             </div>
         </div>

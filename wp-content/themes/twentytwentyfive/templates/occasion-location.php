@@ -144,7 +144,7 @@ $hero_image = $landing ? get_field('landing_hero_image', $landing->ID) : null;
     <div style="background:var(--surface);border-top:1px solid var(--border);padding:var(--space-lg) 0;">
         <div class="hilife-container">
             <div class="hilife-section-label">What our clients say</div>
-            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:2px;margin-top:var(--space-md);">
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:var(--space-md);">
             <?php while ( $feedback->have_posts() ) : $feedback->the_post();
                 $dj = get_field('dj_name', get_the_ID());
             ?>
@@ -174,7 +174,7 @@ $hero_image = $landing ? get_field('landing_hero_image', $landing->ID) : null;
             ?>
                 <a href="/<?php echo $occasion_slug; ?>/<?php echo $loc->slug; ?>"
                    style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim);border:1px solid var(--border);padding:8px 16px;transition:all 0.2s ease;"
-                   onmouseover="this.style.color='var(--gold)';this.style.borderColor='var(--gold)'"
+                   onmouseover="this.style.color='var(--accent)';this.style.borderColor='var(--accent)'"
                    onmouseout="this.style.color='var(--text-dim)';this.style.borderColor='var(--border)'">
                     <?php echo esc_html( $loc->name ); ?>
                 </a>

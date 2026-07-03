@@ -261,11 +261,11 @@ strong { font-weight: 500; color: var(--text-bright); }
 /* ── FOOTER ── */
 .hilife-footer {
     background: var(--dark);
-    border-top: 1px solid var(--border);
+    border-top: 3px solid var(--accent);
 }
 
 .hilife-footer-inner {
-    padding: var(--space-lg) 40px var(--space-md);
+    padding: var(--space-xl) 40px var(--space-md);
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: var(--space-lg);
@@ -371,7 +371,7 @@ strong { font-weight: 500; color: var(--text-bright); }
 .hilife-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2px;
+    gap: 12px;
     margin: var(--space-lg) 0;
 }
 
@@ -481,7 +481,7 @@ strong { font-weight: 500; color: var(--text-bright); }
 }
 
 .hilife-event {
-    padding: var(--space-sm) 16px;
+    padding: var(--space-sm) 16px var(--space-sm) 0;
     border-bottom: 1px solid var(--panel-border);
     background: var(--panel);
     display: flex;
@@ -548,7 +548,7 @@ strong { font-weight: 500; color: var(--text-bright); }
 .hilife-playlist li {
     font-size: 0.78rem;
     color: var(--panel-text);
-    padding: 8px 12px;
+    padding: 8px 12px 8px 0;
     border-bottom: 1px solid var(--panel-border);
     background: var(--panel);
     break-inside: avoid;
@@ -602,13 +602,13 @@ strong { font-weight: 500; color: var(--text-bright); }
 .hilife-grid-3 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
+    gap: 12px;
 }
 
 .hilife-grid-2 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 2px;
+    gap: 12px;
 }
 
 /* ── WP CONTENT STYLES ── */

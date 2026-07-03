@@ -25,7 +25,7 @@
             </div>
             <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(26,22,18,0.97) 0%,rgba(26,22,18,0.75) 60%,rgba(26,22,18,0.5) 100%);"></div>
         <?php else : ?>
-            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(227,221,88,0.04) 0%,transparent 60%);pointer-events:none;"></div>
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(20,184,166,0.04) 0%,transparent 60%);pointer-events:none;"></div>
         <?php endif; ?>
         <div style="position:relative;max-width:700px;">
             <div class="hilife-eyebrow">Music</div>
@@ -42,8 +42,8 @@
         <div class="hilife-section-label">Sample playlist</div>
         <ol style="list-style:none;columns:2;gap:var(--space-md);">
         <?php foreach ($playlist as $i => $row) : ?>
-            <li style="font-size:14px;color:var(--panel-text);padding:8px 12px;border-bottom:1px solid var(--panel-border);background:var(--panel);break-inside:avoid;display:flex;gap:16px;align-items:baseline;">
-                <span style="font-size:10px;color:var(--gold);opacity:0.6;font-family:var(--font-mark);min-width:24px;"><?php echo str_pad($i+1, 2, '0', STR_PAD_LEFT); ?></span>
+            <li style="font-size:14px;color:var(--panel-text);padding:8px 12px 8px 0;border-bottom:1px solid var(--panel-border);background:var(--panel);break-inside:avoid;display:flex;gap:16px;align-items:baseline;">
+                <span style="font-size:10px;color:var(--accent);opacity:0.6;font-family:var(--font-mark);min-width:24px;"><?php echo str_pad($i+1, 2, '0', STR_PAD_LEFT); ?></span>
                 <span><?php echo esc_html($row['track']); ?></span>
             </li>
         <?php endforeach; ?>
