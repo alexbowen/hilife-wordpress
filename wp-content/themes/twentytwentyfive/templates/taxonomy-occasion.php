@@ -124,12 +124,12 @@ $feedback = new WP_Query([
         <?php while ( $feedback->have_posts() ) : $feedback->the_post();
             $dj = get_field('dj_name', get_the_ID());
         ?>
-            <div style="background:var(--dark);border:1px solid var(--border);padding:30px;position:relative;">
-                <div style="position:absolute;top:14px;left:22px;font-size:44px;color:rgba(227,221,88,0.1);line-height:1;font-family:Georgia,serif;">"</div>
-                <p style="font-size:13px;line-height:1.9;color:var(--text);font-style:italic;margin-bottom:18px;"><?php echo esc_html(get_the_content()); ?></p>
-                <div style="font-size:11px;color:var(--gold);letter-spacing:0.06em;font-family:var(--font-body);"><?php echo esc_html(get_the_title()); ?></div>
+            <div style="background:var(--panel);border:1px solid var(--panel-border);border-top:2px solid var(--accent);padding:30px;position:relative;">
+                <div style="position:absolute;top:14px;left:22px;font-size:44px;color:rgba(20,184,166,0.12);line-height:1;font-family:Georgia,serif;">"</div>
+                <p style="font-size:14px;line-height:1.9;color:var(--panel-text);font-style:italic;margin-bottom:18px;"><?php echo esc_html(get_the_content()); ?></p>
+                <div style="font-size:12px;color:var(--accent);letter-spacing:0.06em;font-family:var(--font-body);"><?php echo esc_html(get_the_title()); ?></div>
                 <?php if ($dj) : ?>
-                    <div style="font-size:10px;color:var(--text-dim);margin-top:4px;font-family:var(--font-body);"><?php echo esc_html($dj->post_title); ?></div>
+                    <div style="font-size:11px;color:var(--panel-text-dim);margin-top:4px;font-family:var(--font-body);"><?php echo esc_html($dj->post_title); ?></div>
                 <?php endif; ?>
             </div>
         <?php endwhile;

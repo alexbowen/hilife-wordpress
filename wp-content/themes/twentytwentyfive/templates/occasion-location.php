@@ -148,11 +148,11 @@ $hero_image = $landing ? get_field('landing_hero_image', $landing->ID) : null;
             <?php while ( $feedback->have_posts() ) : $feedback->the_post();
                 $dj = get_field('dj_name', get_the_ID());
             ?>
-                <div style="background:var(--surface2);border:1px solid var(--border);padding:var(--space-md);">
-                    <p style="font-size:0.85rem;line-height:1.8;color:var(--text);font-style:italic;margin-bottom:var(--space-sm);">"<?php echo esc_html( get_the_content() ); ?>"</p>
-                    <div style="font-size:0.7rem;color:var(--gold);letter-spacing:0.08em;"><?php echo esc_html( get_the_title() ); ?></div>
+                <div style="background:var(--panel);border:1px solid var(--panel-border);border-top:2px solid var(--accent);padding:var(--space-md);">
+                    <p style="font-size:14px;line-height:1.8;color:var(--panel-text);font-style:italic;margin-bottom:var(--space-sm);">"<?php echo esc_html( get_the_content() ); ?>"</p>
+                    <div style="font-size:12px;color:var(--accent);letter-spacing:0.08em;"><?php echo esc_html( get_the_title() ); ?></div>
                     <?php if ( $dj ) : ?>
-                        <div style="font-size:0.68rem;color:var(--text-dim);margin-top:4px;">DJ: <?php echo esc_html( $dj->post_title ); ?></div>
+                        <div style="font-size:11px;color:var(--panel-text-dim);margin-top:4px;">DJ: <?php echo esc_html( $dj->post_title ); ?></div>
                     <?php endif; ?>
                 </div>
             <?php endwhile;

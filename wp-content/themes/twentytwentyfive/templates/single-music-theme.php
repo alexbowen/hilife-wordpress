@@ -42,7 +42,7 @@
         <div class="hilife-section-label">Sample playlist</div>
         <ol style="list-style:none;columns:2;gap:var(--space-md);">
         <?php foreach ($playlist as $i => $row) : ?>
-            <li style="font-size:13px;color:var(--panel-text);padding:8px 12px;border-bottom:1px solid var(--panel-border);background:var(--panel);break-inside:avoid;display:flex;gap:16px;align-items:baseline;">
+            <li style="font-size:14px;color:var(--panel-text);padding:8px 12px;border-bottom:1px solid var(--panel-border);background:var(--panel);break-inside:avoid;display:flex;gap:16px;align-items:baseline;">
                 <span style="font-size:10px;color:var(--gold);opacity:0.6;font-family:var(--font-mark);min-width:24px;"><?php echo str_pad($i+1, 2, '0', STR_PAD_LEFT); ?></span>
                 <span><?php echo esc_html($row['track']); ?></span>
             </li>
