@@ -57,7 +57,7 @@ $feedback = new WP_Query([
             </div>
             <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(26,22,18,0.97) 0%,rgba(26,22,18,0.7) 60%,rgba(26,22,18,0.4) 100%);"></div>
         <?php else : ?>
-            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 80% 50%,rgba(249,112,102,0.05) 0%,transparent 55%);pointer-events:none;"></div>
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 80% 50%,rgba(20,184,166,0.05) 0%,transparent 55%);pointer-events:none;"></div>
         <?php endif; ?>
         <div style="position:relative;max-width:620px;">
             <div class="hilife-eyebrow">Leeds & the North of England · Est. 2006</div>

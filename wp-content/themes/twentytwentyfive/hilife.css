@@ -4,9 +4,9 @@
 
 :root {
     --gold:           #E3DD58;
-    --accent:         #F97066;
-    --accent-dim:     rgba(249,112,102,0.2);
-    --accent-faint:   rgba(249,112,102,0.06);
+    --accent:         #14B8A6;
+    --accent-dim:     rgba(20,184,166,0.2);
+    --accent-faint:   rgba(20,184,166,0.06);
     --dark:           #2A2520;
     --black:          #1A1612;
     --surface:        #221E1A;
@@ -43,7 +43,7 @@
 }
 
 html {
-    font-size: 19px;
+    font-size: 17px;
     scroll-behavior: smooth;
 }
 
@@ -339,7 +339,7 @@ strong { font-weight: 500; color: var(--text-bright); }
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 30% 50%, rgba(249,112,102,0.05) 0%, transparent 60%);
+    background: radial-gradient(ellipse at 30% 50%, rgba(20,184,166,0.05) 0%, transparent 60%);
     pointer-events: none;
 }
 
@@ -385,7 +385,7 @@ strong { font-weight: 500; color: var(--text-bright); }
 }
 
 .hilife-card:hover {
-    border-color: rgba(249,112,102,0.3);
+    border-color: rgba(20,184,166,0.3);
 }
 
 .hilife-card-image {
@@ -509,7 +509,7 @@ strong { font-weight: 500; color: var(--text-bright); }
     font-family: var(--font-body);
 }
 
-/* ── GOLD DIVIDER ── */
+/* ── DIVIDER ── */
 .hilife-divider {
     width: 48px;
     height: 1px;
