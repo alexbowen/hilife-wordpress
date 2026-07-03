@@ -66,7 +66,7 @@ $has_hero = $home_page_id && has_post_thumbnail($home_page_id);
             <p style="font-size:14px;color:var(--text-dim);line-height:1.8;margin-bottom:32px;font-family:var(--font-body);font-weight:300;max-width:480px;">
                 Based in Leeds, covering the North of England since 2006. A roster of experienced DJs who genuinely love music and know how to read a room.
             </p>
-            <a href="/contact" style="display:inline-block;background:var(--accent);color:#071a18;font-family:var(--font-mark);font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:13px 28px;text-decoration:none;">Get in touch</a>
+            <a href="/contact" style="display:inline-block;background:var(--gold);color:#0F0F0E;font-family:var(--font-mark);font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:13px 28px;text-decoration:none;">Get in touch</a>
         </div>
     </div>
 
@@ -220,7 +220,7 @@ $has_hero = $home_page_id && has_post_thumbnail($home_page_id);
             <div style="font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);font-family:var(--font-body);margin-bottom:8px;">Planning an event?</div>
             <div style="font-family:var(--font-body);font-size:20px;font-weight:300;color:var(--text-bright);">Let's talk about <em style="font-style:italic;color:var(--accent);">your night</em></div>
         </div>
-        <a href="/contact" style="display:inline-block;background:var(--accent);color:#071a18;font-family:var(--font-mark);font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:13px 28px;text-decoration:none;white-space:nowrap;">Get in touch</a>
+        <a href="/contact" style="display:inline-block;background:var(--gold);color:#0F0F0E;font-family:var(--font-mark);font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:13px 28px;text-decoration:none;white-space:nowrap;">Get in touch</a>
     </div>
 
 </main>
