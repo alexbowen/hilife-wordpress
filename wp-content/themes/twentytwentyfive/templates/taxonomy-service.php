@@ -52,7 +52,7 @@ $feedback = new WP_Query([
     <div style="padding:72px 40px 64px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;<?php echo $image ? 'min-height:360px;display:flex;align-items:flex-end;' : ''; ?>">
         <?php if ( $image ) : ?>
             <div style="position:absolute;inset:0;background-image:url('<?php echo esc_url($image); ?>');background-size:cover;background-position:center;filter:brightness(0.7);"></div>
-            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(15,15,14,0.97) 0%,rgba(15,15,14,0.5) 60%,rgba(15,15,14,0.2) 100%);"></div>
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(26,22,18,0.85) 0%,rgba(26,22,18,0.4) 50%,rgba(26,22,18,0.15) 100%);"></div>
         <?php else : ?>
             <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(20,184,166,0.04) 0%,transparent 60%);pointer-events:none;"></div>
         <?php endif; ?>
@@ -75,17 +75,17 @@ $feedback = new WP_Query([
         ?>
             <a href="<?php echo esc_url(get_term_link($occasion)); ?>"
                style="position:relative;overflow:hidden;aspect-ratio:3/2;display:block;border:1px solid var(--border);text-decoration:none;transition:border-color 0.3s;"
-               onmouseover="this.style.borderColor='var(--accent)';var i=this.querySelector('.card-img');if(i)i.style.filter='brightness(0.45)';this.querySelector('.card-title').style.color='var(--text-bright)'"
-               onmouseout="this.style.borderColor='var(--border)';var i=this.querySelector('.card-img');if(i)i.style.filter='brightness(0.75)';this.querySelector('.card-title').style.color='var(--text-dim)'">
+               onmouseover="this.style.borderColor='var(--accent)';var i=this.querySelector('.card-img');if(i)i.style.filter='brightness(0.45)';this.querySelector('.card-title').style.color='var(--text-bright)';this.querySelector('.card-link').style.color='#ffffff'"
+               onmouseout="this.style.borderColor='var(--border)';var i=this.querySelector('.card-img');if(i)i.style.filter='brightness(0.75)';this.querySelector('.card-title').style.color='var(--text-dim)';this.querySelector('.card-link').style.color='var(--accent)'">
                 <?php if ( $occ_image ) : ?>
                     <div class="card-img" style="position:absolute;inset:0;background-image:url('<?php echo esc_url($occ_image); ?>');background-size:cover;background-position:center;filter:brightness(0.75);transition:filter 0.4s;"></div>
                 <?php else : ?>
                     <div style="position:absolute;inset:0;background:var(--surface);"></div>
                 <?php endif; ?>
-                <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(15,15,14,0.95) 0%,rgba(15,15,14,0.3) 70%,transparent 100%);"></div>
+                <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(26,22,18,0.82) 0%,rgba(26,22,18,0.3) 60%,transparent 100%);"></div>
                 <div style="position:absolute;bottom:0;left:0;right:0;padding:20px 22px;">
                     <div class="card-title" style="font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--text-dim);margin-bottom:4px;transition:color 0.3s;"><?php echo esc_html($occasion->name); ?></div>
-                    <div style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);font-family:var(--font-body);">Find out more →</div>
+                    <div class="card-link" style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);font-family:var(--font-body);transition:color 0.3s;">Find out more →</div>
                 </div>
             </a>
         <?php endforeach; ?>

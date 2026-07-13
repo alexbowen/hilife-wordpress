@@ -51,7 +51,7 @@ $feedback = new WP_Query([
     <div style="padding:72px 40px 64px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;<?php echo $image ? 'min-height:360px;display:flex;align-items:flex-end;' : ''; ?>">
         <?php if ( $image ) : ?>
             <div style="position:absolute;inset:0;background-image:url('<?php echo esc_url($image); ?>');background-size:cover;background-position:center;filter:brightness(0.7);"></div>
-            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(15,15,14,0.97) 0%,rgba(15,15,14,0.5) 60%,rgba(15,15,14,0.2) 100%);"></div>
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(26,22,18,0.85) 0%,rgba(26,22,18,0.4) 50%,rgba(26,22,18,0.15) 100%);"></div>
         <?php else : ?>
             <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(20,184,166,0.04) 0%,transparent 60%);pointer-events:none;"></div>
         <?php endif; ?>
@@ -82,7 +82,7 @@ $feedback = new WP_Query([
                 <?php else : ?>
                     <div style="position:absolute;inset:0;background:var(--surface);"></div>
                 <?php endif; ?>
-                <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(15,15,14,0.95) 0%,rgba(15,15,14,0.3) 70%,transparent 100%);"></div>
+                <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(26,22,18,0.82) 0%,rgba(26,22,18,0.3) 60%,transparent 100%);"></div>
                 <div style="position:absolute;bottom:0;left:0;right:0;padding:20px 22px;">
                     <div class="card-title" style="font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--text-dim);margin-bottom:4px;transition:color 0.3s;"><?php echo esc_html($location->name); ?></div>
                     <div style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);font-family:var(--font-body);"><?php echo esc_html($term->name); ?> →</div>

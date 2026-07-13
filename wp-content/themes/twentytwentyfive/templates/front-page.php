@@ -54,7 +54,7 @@ $has_hero = $home_page_id && has_post_thumbnail($home_page_id);
             <div style="position:absolute;inset:0;">
                 <?php echo get_the_post_thumbnail($home_page_id, 'full', ['style' => 'width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.65);']); ?>
             </div>
-            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(26,22,18,0.97) 0%,rgba(26,22,18,0.7) 60%,rgba(26,22,18,0.4) 100%);"></div>
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(26,22,18,0.85) 0%,rgba(26,22,18,0.4) 50%,rgba(26,22,18,0.15) 100%);"></div>
         <?php else : ?>
             <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 80% 50%,rgba(20,184,166,0.05) 0%,transparent 55%);pointer-events:none;"></div>
         <?php endif; ?>
@@ -80,8 +80,8 @@ $has_hero = $home_page_id && has_post_thumbnail($home_page_id);
             $link  = get_term_link($occasion);
         ?>
             <a href="<?php echo esc_url($link); ?>" style="position:relative;overflow:hidden;aspect-ratio:4/3;display:block;border:1px solid var(--panel-border);background:var(--panel);text-decoration:none;transition:border-color 0.3s;"
-               onmouseover="this.style.borderColor='var(--accent)';var i=this.querySelector('.card-img');if(i)i.style.filter='brightness(0.45)';this.querySelector('.card-title').style.color='var(--text-bright)'"
-               onmouseout="this.style.borderColor='var(--panel-border)';var i=this.querySelector('.card-img');if(i)i.style.filter='brightness(0.75)';this.querySelector('.card-title').style.color='var(--panel-text)'">
+               onmouseover="this.style.borderColor='var(--accent)';var i=this.querySelector('.card-img');if(i)i.style.filter='brightness(0.45)';this.querySelector('.card-title').style.color='var(--text-bright)';this.querySelector('.card-link').style.color='#ffffff'"
+               onmouseout="this.style.borderColor='var(--panel-border)';var i=this.querySelector('.card-img');if(i)i.style.filter='brightness(0.75)';this.querySelector('.card-title').style.color='var(--panel-text)';this.querySelector('.card-link').style.color='var(--accent)'">
                 <?php if ( $image ) : ?>
                     <div class="card-img" style="position:absolute;inset:0;background-image:url('<?php echo esc_url($image); ?>');background-size:cover;background-position:center;filter:brightness(0.75);transition:filter 0.4s;"></div>
                 <?php else : ?>
@@ -89,13 +89,13 @@ $has_hero = $home_page_id && has_post_thumbnail($home_page_id);
                         <span style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--border);font-family:var(--font-body);">Add occasion image</span>
                     </div>
                 <?php endif; ?>
-                <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(26,22,18,0.2) 0%,rgba(26,22,18,0.4) 50%,transparent 100%);"></div>
+                <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(26,22,18,0.82) 0%,rgba(26,22,18,0.3) 60%,transparent 100%);"></div>
                 <div style="position:absolute;bottom:0;left:0;right:0;padding:24px;">
                     <div class="card-title" style="font-family:var(--font-display);font-size:22px;font-weight:400;color:var(--text-bright);transition:color 0.3s;"><?php echo esc_html($occasion->name); ?></div>
                     <?php if ( $occasion->description ) : ?>
                         <div style="font-size:13px;color:var(--text-dim);line-height:1.6;font-family:var(--font-body);font-weight:300;margin-bottom:14px;"><?php echo esc_html($occasion->description); ?></div>
                     <?php endif; ?>
-                    <span style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);font-family:var(--font-body);">Find out more →</span>
+                    <span class="card-link" style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);font-family:var(--font-body);transition:color 0.3s;">Find out more →</span>
                 </div>
             </a>
         <?php endforeach; ?>
@@ -127,8 +127,8 @@ $has_hero = $home_page_id && has_post_thumbnail($home_page_id);
             $link  = get_term_link($service);
         ?>
             <a href="<?php echo esc_url($link); ?>" style="position:relative;overflow:hidden;aspect-ratio:4/3;display:block;border:1px solid var(--panel-border);background:var(--panel);text-decoration:none;transition:border-color 0.3s;"
-               onmouseover="this.style.borderColor='var(--accent)';var i=this.querySelector('.card-img');if(i)i.style.filter='brightness(0.45)';this.querySelector('.card-title').style.color='var(--text-bright)'"
-               onmouseout="this.style.borderColor='var(--panel-border)';var i=this.querySelector('.card-img');if(i)i.style.filter='brightness(0.75)';this.querySelector('.card-title').style.color='var(--panel-text)'">
+               onmouseover="this.style.borderColor='var(--accent)';var i=this.querySelector('.card-img');if(i)i.style.filter='brightness(0.45)';this.querySelector('.card-title').style.color='var(--text-bright)';this.querySelector('.card-link').style.color='#ffffff'"
+               onmouseout="this.style.borderColor='var(--panel-border)';var i=this.querySelector('.card-img');if(i)i.style.filter='brightness(0.75)';this.querySelector('.card-title').style.color='var(--panel-text)';this.querySelector('.card-link').style.color='var(--accent)'">
                 <?php if ( $image ) : ?>
                     <div class="card-img" style="position:absolute;inset:0;background-image:url('<?php echo esc_url($image); ?>');background-size:cover;background-position:center;filter:brightness(0.75);transition:filter 0.4s;"></div>
                 <?php else : ?>
@@ -136,13 +136,13 @@ $has_hero = $home_page_id && has_post_thumbnail($home_page_id);
                         <span style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--border);font-family:var(--font-body);">Add service image</span>
                     </div>
                 <?php endif; ?>
-                <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(26,22,18,0.2) 0%,rgba(26,22,18,0.4) 50%,transparent 100%);"></div>
+                <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(26,22,18,0.82) 0%,rgba(26,22,18,0.3) 60%,transparent 100%);"></div>
                 <div style="position:absolute;bottom:0;left:0;right:0;padding:24px;">
                     <div class="card-title" style="font-family:var(--font-display);font-size:22px;font-weight:400;color:var(--text-bright);transition:color 0.3s;"><?php echo esc_html($service->name); ?></div>
                     <?php if ( $service->description ) : ?>
                         <div style="font-size:13px;color:var(--text-dim);line-height:1.6;font-family:var(--font-body);font-weight:300;margin-bottom:14px;"><?php echo esc_html($service->description); ?></div>
                     <?php endif; ?>
-                    <span style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);font-family:var(--font-body);">Find out more →</span>
+                    <span class="card-link" style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);font-family:var(--font-body);transition:color 0.3s;">Find out more →</span>
                 </div>
             </a>
         <?php endforeach; ?>
