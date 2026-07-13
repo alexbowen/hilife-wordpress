@@ -51,7 +51,7 @@ $feedback = new WP_Query([
     <!-- HERO -->
     <div style="padding:72px 40px 64px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;<?php echo $image ? 'min-height:360px;display:flex;align-items:flex-end;' : ''; ?>">
         <?php if ( $image ) : ?>
-            <div style="position:absolute;inset:0;background-image:url('<?php echo esc_url($image); ?>');background-size:cover;background-position:center;filter:brightness(0.6);"></div>
+            <div style="position:absolute;inset:0;background-image:url('<?php echo esc_url($image); ?>');background-size:cover;background-position:center;filter:brightness(0.7);"></div>
             <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(15,15,14,0.97) 0%,rgba(15,15,14,0.5) 60%,rgba(15,15,14,0.2) 100%);"></div>
         <?php else : ?>
             <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(20,184,166,0.04) 0%,transparent 60%);pointer-events:none;"></div>
@@ -76,7 +76,7 @@ $feedback = new WP_Query([
             <a href="<?php echo esc_url(get_term_link($occasion)); ?>"
                style="position:relative;overflow:hidden;aspect-ratio:3/2;display:block;border:1px solid var(--border);text-decoration:none;">
                 <?php if ( $occ_image ) : ?>
-                    <div style="position:absolute;inset:0;background-image:url('<?php echo esc_url($occ_image); ?>');background-size:cover;background-position:center;filter:brightness(0.6);"></div>
+                    <div style="position:absolute;inset:0;background-image:url('<?php echo esc_url($occ_image); ?>');background-size:cover;background-position:center;filter:brightness(0.7);"></div>
                 <?php else : ?>
                     <div style="position:absolute;inset:0;background:var(--surface);"></div>
                 <?php endif; ?>
@@ -97,9 +97,9 @@ $feedback = new WP_Query([
         <div style="display:flex;flex-wrap:wrap;gap:8px;">
         <?php foreach ( $locations as $loc ) : ?>
             <a href="<?php echo esc_url(get_term_link($loc)); ?>"
-               style="font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-dim);border:1px solid var(--border);padding:8px 18px;font-family:var(--font-body);text-decoration:none;transition:all 0.2s;"
+               style="font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--panel-text);border:1px solid var(--border);padding:8px 18px;font-family:var(--font-body);text-decoration:none;transition:all 0.2s;"
                onmouseover="this.style.color='var(--accent)';this.style.borderColor='rgba(20,184,166,0.4)'"
-               onmouseout="this.style.color='var(--text-dim)';this.style.borderColor='var(--border)'">
+               onmouseout="this.style.color='var(--panel-text)';this.style.borderColor='var(--border)'">
                 <?php echo esc_html($loc->name); ?>
             </a>
         <?php endforeach; ?>

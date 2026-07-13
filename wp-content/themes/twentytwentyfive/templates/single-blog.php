@@ -37,7 +37,7 @@
             <?php the_content(); ?>
         </div>
         <div style="margin-top:48px;">
-            <a href="/blog" style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);font-family:var(--font-body);text-decoration:none;">← Back to blog</a>
+            <a href="/blog" style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--panel-text);font-family:var(--font-body);text-decoration:none;">← Back to blog</a>
         </div>
     </div>
 

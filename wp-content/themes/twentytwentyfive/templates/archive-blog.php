@@ -19,7 +19,7 @@
     <div style="padding:72px 40px 56px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;<?php echo $has_hero ? 'min-height:360px;display:flex;align-items:flex-end;' : ''; ?>">
         <?php if ( $has_hero ) : ?>
             <div style="position:absolute;inset:0;">
-                <?php echo get_the_post_thumbnail($blog_page_id, 'full', ['style' => 'width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.5);']); ?>
+                <?php echo get_the_post_thumbnail($blog_page_id, 'full', ['style' => 'width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.65);']); ?>
             </div>
             <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(26,22,18,0.97) 0%,rgba(26,22,18,0.7) 60%,rgba(26,22,18,0.4) 100%);"></div>
         <?php else : ?>

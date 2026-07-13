@@ -52,7 +52,7 @@ $has_hero = $home_page_id && has_post_thumbnail($home_page_id);
     <div style="padding:72px 40px 64px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;background:linear-gradient(135deg,var(--surface) 0%,var(--black) 60%,#1c1a0c 100%);<?php echo $has_hero ? 'min-height:420px;display:flex;align-items:flex-end;' : ''; ?>">
         <?php if ( $has_hero ) : ?>
             <div style="position:absolute;inset:0;">
-                <?php echo get_the_post_thumbnail($home_page_id, 'full', ['style' => 'width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.5);']); ?>
+                <?php echo get_the_post_thumbnail($home_page_id, 'full', ['style' => 'width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.65);']); ?>
             </div>
             <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(26,22,18,0.97) 0%,rgba(26,22,18,0.7) 60%,rgba(26,22,18,0.4) 100%);"></div>
         <?php else : ?>
@@ -83,7 +83,7 @@ $has_hero = $home_page_id && has_post_thumbnail($home_page_id);
                onmouseover="this.style.borderColor='var(--accent)'"
                onmouseout="this.style.borderColor='var(--panel-border)'">
                 <?php if ( $image ) : ?>
-                    <div style="position:absolute;inset:0;background-image:url('<?php echo esc_url($image); ?>');background-size:cover;background-position:center;filter:brightness(0.55);transition:filter 0.4s;"></div>
+                    <div style="position:absolute;inset:0;background-image:url('<?php echo esc_url($image); ?>');background-size:cover;background-position:center;filter:brightness(0.65);transition:filter 0.4s;"></div>
                 <?php else : ?>
                     <div style="position:absolute;inset:0;background:var(--panel);display:flex;align-items:center;justify-content:center;">
                         <span style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--border);font-family:var(--font-body);">Add occasion image</span>
@@ -108,9 +108,9 @@ $has_hero = $home_page_id && has_post_thumbnail($home_page_id);
             <span style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);font-family:var(--font-body);margin-right:12px;white-space:nowrap;">Areas we cover</span>
             <?php foreach ( $locations as $loc ) : ?>
                 <a href="<?php echo esc_url(get_term_link($loc)); ?>"
-                   style="font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-dim);border:1px solid var(--border);padding:7px 16px;font-family:var(--font-body);text-decoration:none;transition:all 0.2s;"
+                   style="font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--panel-text);border:1px solid var(--border);padding:7px 16px;font-family:var(--font-body);text-decoration:none;transition:all 0.2s;"
                    onmouseover="this.style.color='var(--accent)';this.style.borderColor='var(--accent)'"
-                   onmouseout="this.style.color='var(--text-dim)';this.style.borderColor='var(--border)'">
+                   onmouseout="this.style.color='var(--panel-text)';this.style.borderColor='var(--border)'">
                     <?php echo esc_html($loc->name); ?>
                 </a>
             <?php endforeach; ?>
@@ -130,7 +130,7 @@ $has_hero = $home_page_id && has_post_thumbnail($home_page_id);
                onmouseover="this.style.borderColor='var(--accent)'"
                onmouseout="this.style.borderColor='var(--panel-border)'">
                 <?php if ( $image ) : ?>
-                    <div style="position:absolute;inset:0;background-image:url('<?php echo esc_url($image); ?>');background-size:cover;background-position:center;filter:brightness(0.55);transition:filter 0.4s;"></div>
+                    <div style="position:absolute;inset:0;background-image:url('<?php echo esc_url($image); ?>');background-size:cover;background-position:center;filter:brightness(0.65);transition:filter 0.4s;"></div>
                 <?php else : ?>
                     <div style="position:absolute;inset:0;background:var(--panel);display:flex;align-items:center;justify-content:center;">
                         <span style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--border);font-family:var(--font-body);">Add service image</span>
@@ -214,9 +214,9 @@ $has_hero = $home_page_id && has_post_thumbnail($home_page_id);
                 $music_terms = get_posts(['post_type' => 'music-theme', 'posts_per_page' => 11, 'orderby' => 'rand']);
                 foreach ( $music_terms as $mt ) : ?>
                     <a href="<?php echo get_permalink($mt->ID); ?>"
-                       style="font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-dim);border:1px solid var(--border);padding:7px 16px;font-family:var(--font-body);text-decoration:none;transition:all 0.2s;"
+                       style="font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--panel-text);border:1px solid var(--border);padding:7px 16px;font-family:var(--font-body);text-decoration:none;transition:all 0.2s;"
                        onmouseover="this.style.color='var(--accent)';this.style.borderColor='var(--accent)'"
-                       onmouseout="this.style.color='var(--text-dim)';this.style.borderColor='var(--border)'">
+                       onmouseout="this.style.color='var(--panel-text)';this.style.borderColor='var(--border)'">
                         <?php echo esc_html($mt->post_title); ?>
                     </a>
                 <?php endforeach; ?>

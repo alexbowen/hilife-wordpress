@@ -85,12 +85,12 @@ p {
 }
 
 a {
-    color: var(--accent);
+    color: var(--panel-text);
     text-decoration: none;
     transition: opacity 0.2s ease;
 }
 
-a:hover { opacity: 0.75; }
+a:hover { color: var(--accent); opacity: 0.75; }
 
 strong { font-weight: 500; color: var(--text-bright); }
 
@@ -160,7 +160,7 @@ strong { font-weight: 500; color: var(--text-bright); }
     font-weight: 400;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--text-dim);
+    color: var(--panel-text);
     text-decoration: none;
     transition: color 0.2s ease;
     white-space: nowrap;
@@ -210,7 +210,7 @@ strong { font-weight: 500; color: var(--text-bright); }
     display: block;
     padding: 5px 16px;
     font-size: 0.65rem;
-    color: var(--text-dim);
+    color: var(--panel-text);
     white-space: nowrap;
 }
 
@@ -261,7 +261,7 @@ strong { font-weight: 500; color: var(--text-bright); }
 /* ── FOOTER ── */
 .hilife-footer {
     background: var(--dark);
-    border-top: 3px solid var(--accent);
+    border-top: 2px solid var(--accent);
 }
 
 .hilife-footer-inner {
@@ -313,7 +313,7 @@ strong { font-weight: 500; color: var(--text-bright); }
 
 .hilife-footer-col ul a {
     font-size: 0.8rem;
-    color: var(--text-dim);
+    color: var(--panel-text);
     transition: color 0.2s ease;
 }
 
@@ -478,6 +478,7 @@ strong { font-weight: 500; color: var(--text-bright); }
 .hilife-events {
     list-style: none;
     margin: var(--space-md) 0;
+    padding-left: 0;
 }
 
 .hilife-event {
@@ -543,18 +544,20 @@ strong { font-weight: 500; color: var(--text-bright); }
     columns: 2;
     gap: var(--space-md);
     margin: var(--space-md) 0;
+    padding-left: 0;
 }
 
 .hilife-playlist li {
     font-size: 0.78rem;
     color: var(--panel-text);
-    padding: 8px 12px 8px 0;
+    padding: 8px 12px 8px 16px;
     border-bottom: 1px solid var(--panel-border);
     background: var(--panel);
     break-inside: avoid;
 }
 
 .hilife-playlist li::before {
+    display: none;
     content: '— ';
     color: var(--accent);
     opacity: 0.6;

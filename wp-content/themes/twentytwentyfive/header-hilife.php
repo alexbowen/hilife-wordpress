@@ -78,16 +78,16 @@ $nav_services  = get_terms(['taxonomy' => 'service',  'hide_empty' => false]);
 <div style="background:var(--dark);border-bottom:1px solid var(--border);padding:0 40px;">
     <div style="display:flex;align-items:center;height:44px;gap:2rem;">
         <?php if ($is_admin) : ?>
-            <a href="/admin/events" style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);text-decoration:none;">Admin</a>
+            <a href="/admin/events" style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--panel-text);text-decoration:none;">Admin</a>
         <?php endif; ?>
         <?php if ($is_internal) : ?>
-            <a href="/planner/view/bookings" style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);text-decoration:none;">My Bookings</a>
+            <a href="/planner/view/bookings" style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--panel-text);text-decoration:none;">My Bookings</a>
         <?php endif; ?>
         <?php if ($is_customer) : ?>
-            <a href="/planner" style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);text-decoration:none;">Music Planner</a>
+            <a href="/planner" style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--panel-text);text-decoration:none;">Music Planner</a>
         <?php endif; ?>
-        <a href="/account" style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);text-decoration:none;">Account</a>
-        <a href="/auth/revoke" style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);text-decoration:none;margin-left:auto;">Sign out</a>
+        <a href="/account" style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--panel-text);text-decoration:none;">Account</a>
+        <a href="/auth/revoke" style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--panel-text);text-decoration:none;margin-left:auto;">Sign out</a>
     </div>
 </div>
 <?php endif; ?>

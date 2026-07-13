@@ -59,7 +59,7 @@
 
     <!-- BACK LINK -->
     <div style="padding:32px 40px;">
-        <a href="/djs" style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);font-family:var(--font-body);text-decoration:none;">← Back to all DJs</a>
+        <a href="/djs" style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--panel-text);font-family:var(--font-body);text-decoration:none;">← Back to all DJs</a>
     </div>
 
 <?php endif; ?>
