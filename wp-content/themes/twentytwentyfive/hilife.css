@@ -447,7 +447,7 @@ strong { font-weight: 500; color: var(--text-bright); }
 
 .hilife-card-text {
     font-size: 0.82rem;
-    color: var(--text-dim);
+    color: var(--panel-text);
     line-height: 1.7;
     flex: 1;
     margin-bottom: 0;
