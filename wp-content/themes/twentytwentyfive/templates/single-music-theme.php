@@ -53,7 +53,7 @@
     <!-- BACK + CTA -->
     <div style="padding:40px;border-top:1px solid var(--border);background:var(--surface);display:flex;align-items:center;justify-content:space-between;gap:32px;">
         <a href="/music" style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--panel-text);font-family:var(--font-body);text-decoration:none;">← All music</a>
-        <a href="/contact" style="display:inline-block;background:var(--gold);color:var(--black);font-family:var(--font-mark);font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:13px 28px;text-decoration:none;white-space:nowrap;">Get in touch</a>
+        <a href="/contact" style="display:inline-block;background:var(--gold);color:var(--black);font-family:var(--font-mark);font-size:13px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:13px 28px;text-decoration:none;white-space:nowrap;">Get in touch</a>
     </div>
 
 <?php endif; ?>
