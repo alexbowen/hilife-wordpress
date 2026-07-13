@@ -51,20 +51,19 @@ $themes = new WP_Query([
                 $about = get_field('theme_about', get_the_ID());
         ?>
             <a href="<?php the_permalink(); ?>" style="display:block;background:var(--surface);border:1px solid var(--border);text-decoration:none;transition:border-color 0.3s;position:relative;overflow:hidden;"
-               onmouseover="this.style.borderColor='rgba(20,184,166,0.3)'"
-               onmouseout="this.style.borderColor='var(--border)'">
+               onmouseover="this.style.borderColor='rgba(20,184,166,0.3)';var i=this.querySelector('.card-img');if(i)i.style.filter='brightness(0.45)';this.querySelector('.card-title').style.color='var(--text-bright)'"
+               onmouseout="this.style.borderColor='var(--border)';var i=this.querySelector('.card-img');if(i)i.style.filter='brightness(0.75)';this.querySelector('.card-title').style.color='var(--text-dim)'">
                 <?php if ( has_post_thumbnail() ) : ?>
                     <div style="aspect-ratio:3/2;overflow:hidden;background:var(--surface2);">
-                        <?php the_post_thumbnail('medium', ['style' => 'width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s ease;']); ?>
+                        <?php the_post_thumbnail('medium', ['class' => 'card-img', 'style' => 'width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.75);transition:filter 0.4s ease;']); ?>
                     </div>
                 <?php else : ?>
                     <div style="aspect-ratio:3/2;background:var(--surface2);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border);">
                         <span style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--border);font-family:var(--font-body);">Image coming soon</span>
                     </div>
                 <?php endif; ?>
-                <div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform 0.3s;"></div>
                 <div style="padding:22px 24px;">
-                    <div style="font-family:var(--font-display);font-size:17px;font-weight:600;color:var(--text-bright);margin-bottom:8px;"><?php the_title(); ?></div>
+                    <div class="card-title" style="font-family:var(--font-display);font-size:17px;font-weight:600;color:var(--text-dim);margin-bottom:8px;transition:color 0.3s;"><?php the_title(); ?></div>
                     <?php if ($about) : ?>
                         <p style="font-size:12px;color:var(--text-dim);line-height:1.7;font-family:var(--font-body);font-weight:300;margin-bottom:14px;"><?php echo esc_html(wp_trim_words($about, 20)); ?></p>
                     <?php endif; ?>

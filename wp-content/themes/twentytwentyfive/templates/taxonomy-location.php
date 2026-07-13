@@ -75,16 +75,17 @@ $feedback = new WP_Query([
             $intersection_url = '/' . $occasion->slug . '/' . $term->slug;
         ?>
             <a href="<?php echo esc_url($intersection_url); ?>"
-               style="position:relative;overflow:hidden;aspect-ratio:3/2;display:block;border:1px solid var(--border);text-decoration:none;">
+               style="position:relative;overflow:hidden;aspect-ratio:3/2;display:block;border:1px solid var(--border);text-decoration:none;transition:border-color 0.3s;"
+               onmouseover="this.style.borderColor='var(--accent)';var i=this.querySelector('.card-img');if(i)i.style.filter='brightness(0.45)';this.querySelector('.card-title').style.color='var(--text-bright)'"
+               onmouseout="this.style.borderColor='var(--border)';var i=this.querySelector('.card-img');if(i)i.style.filter='brightness(0.75)';this.querySelector('.card-title').style.color='var(--text-dim)'">
                 <?php if ( $occ_image ) : ?>
-                    <div style="position:absolute;inset:0;background-image:url('<?php echo esc_url($occ_image); ?>');background-size:cover;background-position:center;filter:brightness(0.7);transition:transform 0.5s ease;"></div>
+                    <div class="card-img" style="position:absolute;inset:0;background-image:url('<?php echo esc_url($occ_image); ?>');background-size:cover;background-position:center;filter:brightness(0.75);transition:filter 0.4s;"></div>
                 <?php else : ?>
                     <div style="position:absolute;inset:0;background:var(--surface);"></div>
                 <?php endif; ?>
                 <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(15,15,14,0.95) 0%,rgba(15,15,14,0.3) 70%,transparent 100%);"></div>
-                <div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform 0.3s;" class="occasion-bar"></div>
                 <div style="position:absolute;bottom:0;left:0;right:0;padding:20px 22px;">
-                    <div style="font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--text-bright);margin-bottom:4px;"><?php echo esc_html($occasion->name); ?></div>
+                    <div class="card-title" style="font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--text-dim);margin-bottom:4px;transition:color 0.3s;"><?php echo esc_html($occasion->name); ?></div>
                     <div style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);font-family:var(--font-body);">in <?php echo esc_html($term->name); ?> →</div>
                 </div>
             </a>

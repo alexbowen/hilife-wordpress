@@ -53,11 +53,11 @@ $djs = new WP_Query([
                 $link_text = get_field('dj_link_text', get_the_ID());
         ?>
             <a href="<?php the_permalink(); ?>" style="display:block;background:var(--surface);border:1px solid var(--border);text-decoration:none;transition:border-color 0.3s;"
-               onmouseover="this.style.borderColor='rgba(20,184,166,0.3)'"
-               onmouseout="this.style.borderColor='var(--border)'">
+               onmouseover="this.style.borderColor='rgba(20,184,166,0.3)';var i=this.querySelector('.card-img');if(i)i.style.filter='brightness(0.45)';this.querySelector('.card-title').style.color='var(--text-bright)'"
+               onmouseout="this.style.borderColor='var(--border)';var i=this.querySelector('.card-img');if(i)i.style.filter='brightness(0.75)';this.querySelector('.card-title').style.color='var(--text-dim)'">
                 <?php if ( has_post_thumbnail() ) : ?>
                     <div style="aspect-ratio:1/1;overflow:hidden;background:var(--surface2);">
-                        <?php the_post_thumbnail('medium_large', ['style' => 'width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s ease;']); ?>
+                        <?php the_post_thumbnail('medium_large', ['class' => 'card-img', 'style' => 'width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.75);transition:filter 0.4s ease;']); ?>
                     </div>
                 <?php else : ?>
                     <div style="aspect-ratio:1/1;background:var(--surface2);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border);">
@@ -65,7 +65,7 @@ $djs = new WP_Query([
                     </div>
                 <?php endif; ?>
                 <div style="padding:24px;">
-                    <div style="font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--text-bright);margin-bottom:8px;"><?php the_title(); ?></div>
+                    <div class="card-title" style="font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--text-dim);margin-bottom:8px;transition:color 0.3s;"><?php the_title(); ?></div>
                     <?php if ($summary) : ?>
                         <p style="font-size:12px;color:var(--text-dim);line-height:1.7;font-family:var(--font-body);font-weight:300;margin-bottom:16px;"><?php echo esc_html($summary); ?></p>
                     <?php endif; ?>
