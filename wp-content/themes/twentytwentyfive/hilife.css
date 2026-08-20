@@ -474,42 +474,6 @@ strong { font-weight: 500; color: var(--text-bright); }
     content: '→';
 }
 
-/* ── EVENTS LIST ── */
-.hilife-events {
-    list-style: none;
-    margin: var(--space-md) 0;
-    padding-left: 0;
-}
-
-.hilife-event {
-    padding: var(--space-sm) 16px var(--space-sm) 0;
-    border-bottom: 1px solid var(--panel-border);
-    background: var(--panel);
-    display: flex;
-    align-items: flex-start;
-    gap: var(--space-md);
-}
-
-.hilife-event:last-child {
-    border-bottom: none;
-}
-
-.hilife-event-venue {
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: var(--panel-text);
-    line-height: 1.4;
-    font-family: var(--font-body);
-}
-
-.hilife-event-desc {
-    font-size: 0.82rem;
-    color: var(--panel-text-dim);
-    margin-top: 4px;
-    margin-bottom: 0;
-    font-family: var(--font-body);
-}
-
 /* ── DIVIDER ── */
 .hilife-divider {
     width: 48px;

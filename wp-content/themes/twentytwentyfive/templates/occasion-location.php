@@ -118,22 +118,20 @@ $hero_image = $landing ? get_field('landing_hero_image', $landing->ID) : null;
     <div class="hilife-container hilife-section">
         <div class="hilife-section-label">Recent Events</div>
         <?php if ( $events->have_posts() ) : ?>
-            <ul class="hilife-events">
-            <?php while ( $events->have_posts() ) : $events->the_post();
-                $venue = get_field('venue_name', get_the_ID());
-                $desc  = get_field('event_description', get_the_ID());
-            ?>
-                <li class="hilife-event">
-                    <div>
-                        <div class="hilife-event-venue"><?php echo esc_html( $venue ?: get_the_title() ); ?></div>
-                        <?php if ( $desc ) : ?>
-                            <p class="hilife-event-desc"><?php echo esc_html( $desc ); ?></p>
-                        <?php endif; ?>
-                    </div>
-                </li>
-            <?php endwhile;
-            wp_reset_postdata(); ?>
-            </ul>
+        <div class="hilife-grid-2" style="gap:16px;">
+        <?php while ( $events->have_posts() ) : $events->the_post();
+            $venue = get_field('venue_name', get_the_ID());
+            $desc  = get_field('event_description', get_the_ID());
+        ?>
+            <div style="background:var(--panel);border:1px solid var(--panel-border);border-top:2px solid var(--accent);padding:24px 28px;">
+                <div style="font-size:1rem;font-weight:500;color:var(--panel-text);margin-bottom:8px;font-family:var(--font-body);"><?php echo esc_html($venue ?: get_the_title()); ?></div>
+                <?php if ($desc) : ?>
+                    <p style="font-size:0.875rem;color:var(--panel-text-dim);font-family:var(--font-body);font-weight:300;margin-bottom:0;"><?php echo esc_html($desc); ?></p>
+                <?php endif; ?>
+            </div>
+        <?php endwhile;
+        wp_reset_postdata(); ?>
+        </div>
         <?php else : ?>
             <p style="color:var(--text-dim)">No events found for this combination yet.</p>
         <?php endif; ?>

@@ -152,25 +152,24 @@ $has_hero = $home_page_id && has_post_thumbnail($home_page_id);
     <!-- RECENT EVENTS -->
     <div style="padding:48px 40px;border-bottom:1px solid var(--border);">
         <div class="hilife-section-label">Recent events</div>
-        <div class="hilife-grid-2">
-        <?php if ( $events->have_posts() ) :
-            while ( $events->have_posts() ) : $events->the_post();
-                $venue = get_field('venue_name', get_the_ID());
-                $desc  = get_field('event_description', get_the_ID());
+        <?php if ( $events->have_posts() ) : ?>
+        <div class="hilife-grid-2" style="gap:16px;">
+        <?php while ( $events->have_posts() ) : $events->the_post();
+            $venue = get_field('venue_name', get_the_ID());
+            $desc  = get_field('event_description', get_the_ID());
         ?>
-            <div style="background:var(--panel);border:1px solid var(--panel-border);padding:18px 24px;display:flex;gap:16px;align-items:flex-start;">
-                <div style="width:8px;height:8px;border-radius:50%;background:var(--accent);margin-top:8px;flex-shrink:0;"></div>
-                <div>
-                    <div style="font-size:14px;font-weight:500;color:var(--panel-text);margin-bottom:4px;font-family:var(--font-body);"><?php echo esc_html($venue ?: get_the_title()); ?></div>
-                    <?php if ($desc) : ?>
-                        <div style="font-size:12px;color:var(--panel-text-dim);font-family:var(--font-body);font-weight:300;"><?php echo esc_html($desc); ?></div>
-                    <?php endif; ?>
-                </div>
+            <div style="background:var(--panel);border:1px solid var(--panel-border);border-top:2px solid var(--accent);padding:24px 28px;">
+                <div style="font-size:1rem;font-weight:500;color:var(--panel-text);margin-bottom:8px;font-family:var(--font-body);"><?php echo esc_html($venue ?: get_the_title()); ?></div>
+                <?php if ($desc) : ?>
+                    <p style="font-size:0.875rem;color:var(--panel-text-dim);font-family:var(--font-body);font-weight:300;margin-bottom:0;"><?php echo esc_html($desc); ?></p>
+                <?php endif; ?>
             </div>
         <?php endwhile;
-        wp_reset_postdata();
-        endif; ?>
+        wp_reset_postdata(); ?>
         </div>
+        <?php else : ?>
+            <p style="color:var(--text-dim)">No events found yet.</p>
+        <?php endif; ?>
     </div>
 
     <!-- FEEDBACK -->
