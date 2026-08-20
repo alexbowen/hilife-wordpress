@@ -17,8 +17,37 @@ include( get_template_directory() . '/header-hilife.php' );
 
 <main class="hilife-main">
 
+    <style>
+        @media (max-width: 1024px) {
+            .hilife-contact-hero {
+                padding: 40px 20px 32px !important;
+            }
+            .hilife-contact-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .hilife-contact-col {
+                padding: 24px 20px !important;
+            }
+            .hilife-contact-photo {
+                margin-bottom: 12px !important;
+            }
+            .hilife-form-row-2,
+            .hilife-form-row-3 {
+                grid-template-columns: 1fr !important;
+            }
+            .hilife-form-row-2 > div {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+            .hilife-form-submit-row {
+                flex-direction: column !important;
+                gap: 16px !important;
+            }
+        }
+    </style>
+
     <!-- HERO -->
-    <div style="padding:72px 40px 56px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;">
+    <div class="hilife-contact-hero" style="padding:72px 40px 56px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;">
         <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(227,221,88,0.04) 0%,transparent 60%);pointer-events:none;"></div>
         <div style="position:relative;max-width:700px;">
             <div class="hilife-eyebrow">Get in touch</div>
@@ -28,21 +57,21 @@ include( get_template_directory() . '/header-hilife.php' );
     </div>
 
     <!-- CONTACT GRID -->
-    <div style="display:grid;grid-template-columns:1fr 1.6fr;gap:2px;min-height:600px;">
+    <div class="hilife-contact-grid" style="display:grid;grid-template-columns:1fr 1.6fr;gap:2px;min-height:600px;">
 
         <!-- LEFT — Contact info -->
-        <div style="background:var(--panel);border-right:1px solid var(--panel-border);padding:48px 40px;">
+        <div class="hilife-contact-col" style="background:var(--panel);border-right:1px solid var(--panel-border);padding:48px 40px;">
             <div class="hilife-section-label">How to reach us</div>
 
             <?php
             $mark_photo = get_field('contact_mark_photo', 'option');
             ?>
             <?php if ( $mark_photo ) : ?>
-                <div style="width:80px;height:80px;border-radius:50%;overflow:hidden;margin-bottom:20px;border:1px solid var(--border);">
+                <div class="hilife-contact-photo" style="width:80px;height:80px;border-radius:50%;overflow:hidden;margin-bottom:20px;border:1px solid var(--border);">
                     <img src="<?php echo esc_url(is_array($mark_photo) ? $mark_photo['url'] : $mark_photo); ?>" alt="Mark Hepworth" style="width:100%;height:100%;object-fit:cover;">
                 </div>
             <?php else : ?>
-                <div style="width:80px;height:80px;border-radius:50%;background:var(--surface2);border:1px dashed var(--border);margin-bottom:20px;display:flex;align-items:center;justify-content:center;">
+                <div class="hilife-contact-photo" style="width:80px;height:80px;border-radius:50%;background:var(--surface2);border:1px dashed var(--border);margin-bottom:20px;display:flex;align-items:center;justify-content:center;">
                     <span style="font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--border);font-family:var(--font-body);">Photo</span>
                 </div>
             <?php endif; ?>
@@ -68,7 +97,7 @@ include( get_template_directory() . '/header-hilife.php' );
         </div>
 
         <!-- RIGHT — Enquiry form -->
-        <div style="background:var(--panel);border-left:1px solid var(--panel-border);padding:48px 40px;">
+        <div class="hilife-contact-col" style="background:var(--panel);border-left:1px solid var(--panel-border);padding:48px 40px;">
             <div class="hilife-section-label">Enquiry form</div>
 
             <?php if ( isset($_GET['success']) ) : ?>
@@ -93,7 +122,7 @@ include( get_template_directory() . '/header-hilife.php' );
             <form class="hilife-contact-form" name="enquiry-form" action="/actions/event" method="post" novalidate>
 
                 <!-- Name + Email -->
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;">
+                <div class="hilife-form-row-2" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;">
                     <div style="border-bottom:1px solid var(--panel-border);padding:16px 0;padding-right:24px;">
                         <label style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--panel-text);margin-bottom:8px;display:flex;align-items:center;gap:6px;font-family:var(--font-body);">Name <span style="color:var(--gold);">*</span></label>
                         <input type="text" name="event[primary_contact]" required maxlength="60" pattern="[ a-zA-Z\-]+"
@@ -109,7 +138,7 @@ include( get_template_directory() . '/header-hilife.php' );
                 </div>
 
                 <!-- Phone + Event type -->
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;">
+                <div class="hilife-form-row-2" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;">
                     <div style="border-bottom:1px solid var(--panel-border);padding:16px 0;padding-right:24px;">
                         <label style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--panel-text);margin-bottom:8px;display:block;font-family:var(--font-body);">Telephone number</label>
                         <input type="tel" name="event[client_telephone]" pattern="(\+)?([0-9]){10,16}"
@@ -134,7 +163,7 @@ include( get_template_directory() . '/header-hilife.php' );
                 <!-- Event date -->
                 <div style="border-bottom:1px solid var(--panel-border);padding:16px 0;">
                     <label style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--panel-text);margin-bottom:8px;display:flex;align-items:center;gap:6px;font-family:var(--font-body);">Event date <span style="color:var(--gold);">*</span></label>
-                    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">
+                    <div class="hilife-form-row-3" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">
                         <select name="dateInput[year]" required style="background:transparent;border:none;outline:none;color:var(--text-dim);font-family:var(--font-body);font-size:14px;font-weight:300;appearance:none;-webkit-appearance:none;">
                             <option value="" disabled selected>Year</option>
                             <?php for($y = date('Y'); $y <= date('Y') + 5; $y++) echo "<option value='$y'>$y</option>"; ?>
@@ -156,7 +185,7 @@ include( get_template_directory() . '/header-hilife.php' );
                 </div>
 
                 <!-- Venue name + address -->
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;">
+                <div class="hilife-form-row-2" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;">
                     <div style="border-bottom:1px solid var(--panel-border);padding:16px 0;padding-right:24px;">
                         <label style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--panel-text);margin-bottom:8px;display:block;font-family:var(--font-body);">Venue name</label>
                         <input type="text" name="event[venue_name]" maxlength="60" pattern="[ a-zA-Z0-9\-]+"
@@ -174,7 +203,7 @@ include( get_template_directory() . '/header-hilife.php' );
                 <!-- Start time -->
                 <div style="border-bottom:1px solid var(--panel-border);padding:16px 0;">
                     <label style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--panel-text);margin-bottom:8px;display:block;font-family:var(--font-body);">Start time</label>
-                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                    <div class="hilife-form-row-2" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
                         <select name="startTimeInput[hours]" style="background:transparent;border:none;outline:none;color:var(--text-dim);font-family:var(--font-body);font-size:14px;font-weight:300;appearance:none;-webkit-appearance:none;">
                             <option value="" disabled selected>Hour</option>
                             <?php for($h = 10; $h <= 27; $h++) :
@@ -201,7 +230,7 @@ include( get_template_directory() . '/header-hilife.php' );
                 <!-- Finish time -->
                 <div style="border-bottom:1px solid var(--panel-border);padding:16px 0;">
                     <label style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--panel-text);margin-bottom:8px;display:block;font-family:var(--font-body);">Finish time</label>
-                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                    <div class="hilife-form-row-2" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
                         <select name="finishTimeInput[hours]" style="background:transparent;border:none;outline:none;color:var(--text-dim);font-family:var(--font-body);font-size:14px;font-weight:300;appearance:none;-webkit-appearance:none;">
                             <option value="" disabled selected>Hour</option>
                             <?php for($h = 12; $h <= 30; $h++) :
@@ -239,7 +268,7 @@ include( get_template_directory() . '/header-hilife.php' );
                 <input type="hidden" name="action" value="create">
 
                 <!-- reCAPTCHA + Submit -->
-                <div style="padding:28px 0 0;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+                <div class="hilife-form-submit-row" style="padding:28px 0 0;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
                     <div class="g-recaptcha" data-sitekey="<?php echo defined('GOOGLE_RECAPTCHA_SITEKEY') ? GOOGLE_RECAPTCHA_SITEKEY : ''; ?>"></div>
                     <button type="submit" style="background:var(--gold);color:var(--black);font-family:var(--font-mark);font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:14px 32px;border:none;cursor:pointer;white-space:nowrap;">Submit enquiry</button>
                 </div>
