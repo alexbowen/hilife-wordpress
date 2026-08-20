@@ -159,7 +159,7 @@ $has_hero = $home_page_id && has_post_thumbnail($home_page_id);
                 $desc  = get_field('event_description', get_the_ID());
         ?>
             <div style="background:var(--panel);border:1px solid var(--panel-border);padding:18px 24px;display:flex;gap:16px;align-items:flex-start;">
-                <div style="width:6px;height:6px;border-radius:50%;background:var(--accent);margin-top:8px;flex-shrink:0;"></div>
+                <div style="width:8px;height:8px;border-radius:50%;background:var(--accent);margin-top:8px;flex-shrink:0;"></div>
                 <div>
                     <div style="font-size:14px;font-weight:500;color:var(--panel-text);margin-bottom:4px;font-family:var(--font-body);"><?php echo esc_html($venue ?: get_the_title()); ?></div>
                     <?php if ($desc) : ?>
@@ -184,7 +184,7 @@ $has_hero = $home_page_id && has_post_thumbnail($home_page_id);
             <div style="background:var(--panel);border:1px solid var(--panel-border);border-top:2px solid var(--accent);padding:28px;position:relative;">
                 <div style="position:absolute;top:14px;left:22px;font-size:44px;color:rgba(20,184,166,0.12);line-height:1;font-family:Georgia,serif;">"</div>
                 <p style="font-size:14px;line-height:1.9;color:var(--panel-text);font-style:italic;margin-bottom:16px;"><?php echo esc_html(get_the_content()); ?></p>
-                <div style="font-size:12px;color:var(--accent);letter-spacing:0.06em;font-family:var(--font-body);"><?php echo esc_html(get_the_title()); ?></div>
+                <div style="font-size:12px;color:var(--panel-text);letter-spacing:0.06em;font-family:var(--font-body);"><?php echo esc_html(get_the_title()); ?></div>
                 <?php if ($dj) : ?>
                     <div style="font-size:11px;color:var(--panel-text-dim);margin-top:4px;font-family:var(--font-body);"><?php echo esc_html($dj->post_title); ?></div>
                 <?php endif; ?>
