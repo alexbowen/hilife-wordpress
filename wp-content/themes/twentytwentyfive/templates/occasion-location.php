@@ -90,6 +90,7 @@ $feedback = new WP_Query([
 <!-- Hero -->
 <?php
 $hero_image = $landing ? get_field('landing_hero_image', $landing->ID) : null;
+$hero_intro = $intro ?: $occasion->description;
 ?>
 <div class="hilife-hero" <?php if ( $hero_image ) : ?>style="position:relative;min-height:460px;display:flex;align-items:flex-end;" <?php endif; ?>>
     <?php if ( $hero_image ) : ?>
@@ -103,20 +104,27 @@ $hero_image = $landing ? get_field('landing_hero_image', $landing->ID) : null;
             <?php echo esc_html( $location->name ); ?>
         </div>
         <h1><?php echo esc_html( $headline ); ?></h1>
-        <?php if ( $intro ) : ?>
-            <p class="hilife-intro"><?php echo esc_html( $intro ); ?></p>
-        <?php elseif ( ! $hero_image ) : ?>
-            <div class="hilife-placeholder" style="aspect-ratio:16/5">
-                <span class="hilife-placeholder-label">Intro copy</span>
-                <span class="hilife-placeholder-sub">Add a landing page for this combination to show unique content here</span>
-            </div>
+        <?php if ( $hero_intro ) : ?>
+            <p class="hilife-intro"><?php echo esc_html( $hero_intro ); ?></p>
         <?php endif; ?>
     </div>
 </div>
 
+    <!-- Occasion description -->
+    <div style="padding:48px 40px;border-bottom:1px solid var(--border);">
+        <div class="hilife-eyebrow"><?php echo esc_html( $occasion->name ); ?></div>
+        <?php if ( $occasion->description ) : ?>
+            <p style="font-size:1rem;line-height:1.8;color:var(--text);font-family:var(--font-body);font-weight:300;max-width:var(--content-width);margin-bottom:var(--space-sm);"><?php echo esc_html( $occasion->description ); ?></p>
+        <?php endif; ?>
+        <?php if ( $location->description ) : ?>
+            <p style="font-size:1rem;line-height:1.8;color:var(--text);font-family:var(--font-body);font-weight:300;max-width:var(--content-width);margin-bottom:var(--space-sm);"><?php echo esc_html( $location->description ); ?></p>
+        <?php endif; ?>
+        <a href="/contact" style="display:inline-block;margin-top:var(--space-sm);background:var(--gold);color:var(--black);font-family:var(--font-mark);font-size:13px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:13px 28px;text-decoration:none;">Get in touch about your <?php echo esc_html( $occasion->name ); ?></a>
+    </div>
+
     <!-- Events -->
-    <div class="hilife-container hilife-section">
-        <div class="hilife-section-label">Recent Events</div>
+    <div style="padding:48px 40px;border-bottom:1px solid var(--border);">
+        <div class="hilife-section-label">Recent <?php echo esc_html( $occasion->name ); ?> events in <?php echo esc_html( $location->name ); ?></div>
         <?php if ( $events->have_posts() ) : ?>
         <div class="hilife-grid-2" style="gap:16px;">
         <?php while ( $events->have_posts() ) : $events->the_post();
@@ -139,46 +147,76 @@ $hero_image = $landing ? get_field('landing_hero_image', $landing->ID) : null;
 
     <!-- Feedback -->
     <?php if ( $feedback->have_posts() ) : ?>
-    <div style="background:var(--surface);border-top:1px solid var(--border);padding:var(--space-lg) 0;">
-        <div class="hilife-container">
-            <div class="hilife-section-label">What our clients say</div>
-            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:var(--space-md);">
-            <?php while ( $feedback->have_posts() ) : $feedback->the_post();
-                $dj = get_field('dj_name', get_the_ID());
-            ?>
-                <div style="background:var(--panel);border:1px solid var(--panel-border);border-top:2px solid var(--accent);padding:var(--space-md);">
-                    <p style="font-size:14px;line-height:1.8;color:var(--panel-text);font-style:italic;margin-bottom:var(--space-sm);">"<?php echo esc_html( get_the_content() ); ?>"</p>
-                    <div style="font-size:12px;color:var(--accent);letter-spacing:0.08em;"><?php echo esc_html( get_the_title() ); ?></div>
-                    <?php if ( $dj ) : ?>
-                        <div style="font-size:11px;color:var(--panel-text-dim);margin-top:4px;">DJ: <?php echo esc_html( $dj->post_title ); ?></div>
-                    <?php endif; ?>
-                </div>
-            <?php endwhile;
-            wp_reset_postdata(); ?>
+    <div style="background:var(--surface);padding:48px 40px;">
+        <div class="hilife-section-label">What our clients say</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:var(--space-md);">
+        <?php while ( $feedback->have_posts() ) : $feedback->the_post();
+            $dj = get_field('dj_name', get_the_ID());
+        ?>
+            <div style="background:var(--panel);border:1px solid var(--panel-border);border-top:2px solid var(--accent);padding:var(--space-md);">
+                <p style="font-size:14px;line-height:1.8;color:var(--panel-text);font-style:italic;margin-bottom:var(--space-sm);">"<?php echo esc_html( get_the_content() ); ?>"</p>
+                <div style="font-size:12px;color:var(--accent);letter-spacing:0.08em;"><?php echo esc_html( get_the_title() ); ?></div>
+                <?php if ( $dj ) : ?>
+                    <div style="font-size:11px;color:var(--panel-text-dim);margin-top:4px;">DJ: <?php echo esc_html( $dj->post_title ); ?></div>
+                <?php endif; ?>
             </div>
+        <?php endwhile;
+        wp_reset_postdata(); ?>
+        </div>
+    </div>
+    <?php endif; ?>
+
+    <!-- Music themes -->
+    <?php
+    $music_themes = get_posts([
+        'post_type'      => 'music-theme',
+        'posts_per_page' => 6,
+        'orderby'        => 'rand',
+    ]);
+    ?>
+    <?php if ( $music_themes ) : ?>
+    <div style="padding:48px 40px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+        <div class="hilife-section-label">Music for your <?php echo esc_html($occasion->name); ?></div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:var(--space-sm);">
+        <?php foreach ( $music_themes as $mt ) : ?>
+            <a href="<?php echo get_permalink($mt->ID); ?>"
+               style="font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-dim);border:1px solid var(--border);padding:7px 16px;font-family:var(--font-body);text-decoration:none;transition:all 0.2s;"
+               onmouseover="this.style.color='var(--accent)';this.style.borderColor='var(--accent)'"
+               onmouseout="this.style.color='var(--text-dim)';this.style.borderColor='var(--border)'">
+                <?php echo esc_html($mt->post_title); ?>
+            </a>
+        <?php endforeach; ?>
+            <a href="/music" style="font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(20,184,166,0.3);padding:7px 16px;font-family:var(--font-body);text-decoration:none;">+ more →</a>
         </div>
     </div>
     <?php endif; ?>
 
     <!-- Location switcher -->
-    <div style="background:var(--surface);border-top:1px solid var(--border);padding:var(--space-lg) 0;">
-        <div class="hilife-container">
-            <div class="hilife-section-label"><?php echo esc_html( $occasion->name ); ?> in other locations</div>
-            <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:var(--space-sm);">
+    <div style="padding:32px 40px;background:var(--dark);border-bottom:1px solid var(--border);">
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+            <span style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);font-family:var(--font-body);margin-right:12px;white-space:nowrap;"><?php echo esc_html( $occasion->name ); ?> in other areas</span>
             <?php
             $locations = get_terms(['taxonomy' => 'location', 'hide_empty' => false]);
             foreach ( $locations as $loc ) :
                 if ( $loc->slug === $location_slug ) continue;
             ?>
-                <a href="/<?php echo $occasion_slug; ?>/<?php echo $loc->slug; ?>"
-                   style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--panel-text);border:1px solid var(--border);padding:8px 16px;transition:all 0.2s ease;"
+                <a href="/<?php echo esc_attr( $occasion_slug ); ?>/<?php echo esc_attr( $loc->slug ); ?>"
+                   style="font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--panel-text);border:1px solid var(--border);padding:7px 16px;font-family:var(--font-body);text-decoration:none;transition:all 0.2s;"
                    onmouseover="this.style.color='var(--accent)';this.style.borderColor='var(--accent)'"
                    onmouseout="this.style.color='var(--panel-text)';this.style.borderColor='var(--border)'">
                     <?php echo esc_html( $loc->name ); ?>
                 </a>
             <?php endforeach; ?>
-            </div>
         </div>
+    </div>
+
+    <!-- CTA STRIP -->
+    <div style="padding:40px;border-top:1px solid var(--border);background:var(--surface);display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;">
+        <div>
+            <div style="font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);font-family:var(--font-body);margin-bottom:8px;">Planning an event?</div>
+            <div style="font-family:var(--font-body);font-size:20px;font-weight:300;color:var(--text-bright);">Let's talk about <em style="font-style:italic;color:var(--accent);">your night</em></div>
+        </div>
+        <a href="/contact" style="display:inline-block;background:var(--gold);color:#0F0F0E;font-family:var(--font-mark);font-size:13px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:13px 28px;text-decoration:none;white-space:nowrap;">Get in touch</a>
     </div>
 
 </main>
