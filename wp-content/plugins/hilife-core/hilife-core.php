@@ -30,6 +30,20 @@ add_action( 'init', function() {
 
 }, 99 );
 
+// ── landing_page CPT — admin-only (registered via ACF), queried internally by intersection pages ──
+add_filter( 'register_post_type_args', function( $args, $post_type ) {
+    if ( $post_type !== 'landing_page' ) return $args;
+
+    return array_merge( $args, [
+        'public'             => false,
+        'publicly_queryable' => false,
+        'show_in_nav_menus'  => false,
+        'show_in_rest'       => false,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+    ] );
+}, 10, 2 );
+
 add_action('wp_head', function() {
     echo '<link rel="icon" href="' . get_template_directory_uri() . '/assets/favicon.png" type="image/png">';
 });
