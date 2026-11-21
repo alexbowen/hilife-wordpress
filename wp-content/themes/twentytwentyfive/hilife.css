@@ -352,11 +352,28 @@ strong { font-weight: 500; color: var(--text-bright); }
    The hero itself must be position:relative; overflow:hidden. */
 .hilife-hero--has-image {
     border-bottom: 0;
+    /* What the image fades into; matches the page/sections below (body bg). */
+    background: var(--black);
+}
+
+/* .hilife-hero's teal glow would tint the faded zone; the image replaces it. */
+.hilife-hero.hilife-hero--has-image::before {
+    display: none;
 }
 
 /* Shared .hilife-hero (occasion-location.php): lift text clear of the fade */
 .hilife-hero.hilife-hero--has-image {
     padding-bottom: calc(var(--space-lg) + 64px);
+}
+
+/* Fixed frame: exactly the hero's visible box and never transformed, so the
+   fade always ends at the hero's true bottom edge regardless of parallax. */
+.hilife-hero-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 45%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 45%, transparent 100%);
 }
 
 /* Image layer: 12% overscan top and bottom gives the parallax room to move
@@ -368,8 +385,6 @@ strong { font-weight: 500; color: var(--text-bright); }
     top: -12%;
     bottom: -12%;
     will-change: transform;
-    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 60%, transparent 100%);
-    mask-image: linear-gradient(to bottom, #000 0%, #000 60%, transparent 100%);
 }
 
 /* Text-legibility overlay; fades out at the very bottom so it doesn't

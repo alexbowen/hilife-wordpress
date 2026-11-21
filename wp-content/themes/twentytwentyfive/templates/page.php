@@ -22,8 +22,10 @@
     <?php $has_image = has_post_thumbnail(); ?>
     <div<?php echo $has_image ? ' class="hilife-hero--has-image"' : ''; ?> style="<?php echo $has_image ? 'padding:72px 40px 120px;position:relative;overflow:hidden;min-height:360px;display:flex;align-items:flex-end;' : 'padding:72px 40px 56px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;'; ?>">
         <?php if ( $has_image ) : ?>
-            <div class="hilife-hero-media">
-                <?php the_post_thumbnail('full', ['style' => 'width:100%;height:100%;object-fit:cover;display:block;']); ?>
+            <div class="hilife-hero-bg">
+                <div class="hilife-hero-media">
+                    <?php the_post_thumbnail('full', ['style' => 'width:100%;height:100%;object-fit:cover;display:block;']); ?>
+                </div>
             </div>
             <div class="hilife-hero-overlay"></div>
         <?php else : ?>

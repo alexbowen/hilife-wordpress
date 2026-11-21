@@ -29,8 +29,10 @@ $djs = new WP_Query([
     ?>
     <div<?php echo $has_hero ? ' class="hilife-hero--has-image"' : ''; ?> style="<?php echo $has_hero ? 'padding:72px 40px 120px;position:relative;overflow:hidden;min-height:360px;display:flex;align-items:flex-end;' : 'padding:72px 40px 56px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;'; ?>">
         <?php if ( $has_hero ) : ?>
-            <div class="hilife-hero-media">
-                <?php echo get_the_post_thumbnail($dj_page->ID, 'full', ['style' => 'width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.65);']); ?>
+            <div class="hilife-hero-bg">
+                <div class="hilife-hero-media">
+                    <?php echo get_the_post_thumbnail($dj_page->ID, 'full', ['style' => 'width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.65);']); ?>
+                </div>
             </div>
             <div class="hilife-hero-overlay"></div>
         <?php else : ?>

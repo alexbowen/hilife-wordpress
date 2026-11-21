@@ -94,7 +94,9 @@ $hero_intro = $intro ?: $occasion->description;
 ?>
 <div class="hilife-hero<?php echo $hero_image ? ' hilife-hero--has-image' : ''; ?>" <?php if ( $hero_image ) : ?>style="position:relative;min-height:460px;display:flex;align-items:flex-end;" <?php endif; ?>>
     <?php if ( $hero_image ) : ?>
-        <div class="hilife-hero-media" style="background-image:url('<?php echo esc_url($hero_image['url']); ?>');background-size:cover;background-position:center;filter:brightness(0.7);"></div>
+        <div class="hilife-hero-bg">
+            <div class="hilife-hero-media" style="background-image:url('<?php echo esc_url($hero_image['url']); ?>');background-size:cover;background-position:center;filter:brightness(0.7);"></div>
+        </div>
         <div class="hilife-hero-overlay"></div>
     <?php endif; ?>
     <div class="hilife-hero-inner" style="position:relative;z-index:1;<?php if ( $hero_image ) : ?>padding-bottom:var(--space-lg);<?php endif; ?>">

@@ -51,7 +51,9 @@ $feedback = new WP_Query([
     <!-- HERO -->
     <div<?php echo $image ? ' class="hilife-hero--has-image"' : ''; ?> style="<?php echo $image ? 'padding:72px 40px 128px;position:relative;overflow:hidden;min-height:360px;display:flex;align-items:flex-end;' : 'padding:72px 40px 64px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;'; ?>">
         <?php if ( $image ) : ?>
-            <div class="hilife-hero-media" style="background-image:url('<?php echo esc_url($image); ?>');background-size:cover;background-position:center;filter:brightness(0.7);"></div>
+            <div class="hilife-hero-bg">
+                <div class="hilife-hero-media" style="background-image:url('<?php echo esc_url($image); ?>');background-size:cover;background-position:center;filter:brightness(0.7);"></div>
+            </div>
             <div class="hilife-hero-overlay"></div>
         <?php else : ?>
             <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(20,184,166,0.04) 0%,transparent 60%);pointer-events:none;"></div>
