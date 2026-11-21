@@ -48,10 +48,10 @@ $feedback = new WP_Query([
 <main class="hilife-main">
 
     <!-- HERO -->
-    <div style="padding:72px 40px 64px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;<?php echo $image ? 'min-height:360px;display:flex;align-items:flex-end;' : ''; ?>">
+    <div<?php echo $image ? ' class="hilife-hero--has-image"' : ''; ?> style="<?php echo $image ? 'padding:72px 40px 128px;position:relative;overflow:hidden;min-height:360px;display:flex;align-items:flex-end;' : 'padding:72px 40px 64px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;'; ?>">
         <?php if ( $image ) : ?>
-            <div style="position:absolute;inset:0;background-image:url('<?php echo esc_url($image); ?>');background-size:cover;background-position:center;filter:brightness(0.7);"></div>
-            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(26,22,18,0.85) 0%,rgba(26,22,18,0.4) 50%,rgba(26,22,18,0.15) 100%);"></div>
+            <div class="hilife-hero-media" style="background-image:url('<?php echo esc_url($image); ?>');background-size:cover;background-position:center;filter:brightness(0.7);"></div>
+            <div class="hilife-hero-overlay"></div>
         <?php else : ?>
             <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(20,184,166,0.04) 0%,transparent 60%);pointer-events:none;"></div>
         <?php endif; ?>

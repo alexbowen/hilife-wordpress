@@ -347,6 +347,40 @@ strong { font-weight: 500; color: var(--text-bright); }
     position: relative;
 }
 
+/* ── HERO IMAGE: bottom fade + parallax layer ──
+   Applied to every hero that has a background/featured image.
+   The hero itself must be position:relative; overflow:hidden. */
+.hilife-hero--has-image {
+    border-bottom: 0;
+}
+
+/* Shared .hilife-hero (occasion-location.php): lift text clear of the fade */
+.hilife-hero.hilife-hero--has-image {
+    padding-bottom: calc(var(--space-lg) + 64px);
+}
+
+/* Image layer: 12% overscan top and bottom gives the parallax room to move
+   (see assets/hilife.js, which clamps the translate to this overscan). */
+.hilife-hero-media {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -12%;
+    bottom: -12%;
+    will-change: transform;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 60%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 60%, transparent 100%);
+}
+
+/* Text-legibility overlay; fades out at the very bottom so it doesn't
+   leave a dark band over the masked fade. */
+.hilife-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(26,22,18,0.15) 0%, rgba(26,22,18,0.4) 50%, rgba(26,22,18,0.85) 80%, transparent 100%);
+    pointer-events: none;
+}
+
 .hilife-eyebrow {
     font-size: 0.65rem;
     letter-spacing: 0.3em;

@@ -16,12 +16,12 @@
     <!-- HERO -->
     <?php $blog_page_id = get_option('page_for_posts');
     $has_hero = $blog_page_id && has_post_thumbnail($blog_page_id); ?>
-    <div style="padding:72px 40px 56px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;<?php echo $has_hero ? 'min-height:360px;display:flex;align-items:flex-end;' : ''; ?>">
+    <div<?php echo $has_hero ? ' class="hilife-hero--has-image"' : ''; ?> style="<?php echo $has_hero ? 'padding:72px 40px 120px;position:relative;overflow:hidden;min-height:360px;display:flex;align-items:flex-end;' : 'padding:72px 40px 56px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;'; ?>">
         <?php if ( $has_hero ) : ?>
-            <div style="position:absolute;inset:0;">
+            <div class="hilife-hero-media">
                 <?php echo get_the_post_thumbnail($blog_page_id, 'full', ['style' => 'width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.65);']); ?>
             </div>
-            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(26,22,18,0.85) 0%,rgba(26,22,18,0.4) 50%,rgba(26,22,18,0.15) 100%);"></div>
+            <div class="hilife-hero-overlay"></div>
         <?php else : ?>
             <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(20,184,166,0.04) 0%,transparent 60%);pointer-events:none;"></div>
         <?php endif; ?>

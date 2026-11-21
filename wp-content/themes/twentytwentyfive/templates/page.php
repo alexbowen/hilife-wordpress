@@ -20,12 +20,12 @@
 
     <!-- HERO -->
     <?php $has_image = has_post_thumbnail(); ?>
-    <div style="padding:72px 40px 56px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;<?php echo $has_image ? 'min-height:360px;display:flex;align-items:flex-end;' : ''; ?>">
+    <div<?php echo $has_image ? ' class="hilife-hero--has-image"' : ''; ?> style="<?php echo $has_image ? 'padding:72px 40px 120px;position:relative;overflow:hidden;min-height:360px;display:flex;align-items:flex-end;' : 'padding:72px 40px 56px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;'; ?>">
         <?php if ( $has_image ) : ?>
-            <div style="position:absolute;inset:0;">
+            <div class="hilife-hero-media">
                 <?php the_post_thumbnail('full', ['style' => 'width:100%;height:100%;object-fit:cover;display:block;']); ?>
             </div>
-            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(26,22,18,0.85) 0%,rgba(26,22,18,0.4) 50%,rgba(26,22,18,0.15) 100%);"></div>
+            <div class="hilife-hero-overlay"></div>
         <?php else : ?>
             <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(20,184,166,0.04) 0%,transparent 60%);pointer-events:none;"></div>
         <?php endif; ?>

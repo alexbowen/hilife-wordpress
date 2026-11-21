@@ -92,10 +92,10 @@ $feedback = new WP_Query([
 $hero_image = $landing ? get_field('landing_hero_image', $landing->ID) : null;
 $hero_intro = $intro ?: $occasion->description;
 ?>
-<div class="hilife-hero" <?php if ( $hero_image ) : ?>style="position:relative;min-height:460px;display:flex;align-items:flex-end;" <?php endif; ?>>
+<div class="hilife-hero<?php echo $hero_image ? ' hilife-hero--has-image' : ''; ?>" <?php if ( $hero_image ) : ?>style="position:relative;min-height:460px;display:flex;align-items:flex-end;" <?php endif; ?>>
     <?php if ( $hero_image ) : ?>
-        <div style="position:absolute;inset:0;background-image:url('<?php echo esc_url($hero_image['url']); ?>');background-size:cover;background-position:center;filter:brightness(0.7);"></div>
-        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(26,22,18,0.85) 0%,rgba(26,22,18,0.4) 50%,rgba(26,22,18,0.15) 100%);"></div>
+        <div class="hilife-hero-media" style="background-image:url('<?php echo esc_url($hero_image['url']); ?>');background-size:cover;background-position:center;filter:brightness(0.7);"></div>
+        <div class="hilife-hero-overlay"></div>
     <?php endif; ?>
     <div class="hilife-hero-inner" style="position:relative;z-index:1;<?php if ( $hero_image ) : ?>padding-bottom:var(--space-lg);<?php endif; ?>">
         <div class="hilife-eyebrow">
