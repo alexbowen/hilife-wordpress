@@ -48,7 +48,7 @@ $feedback = new WP_Query([
 <main class="hilife-main">
 
     <!-- HERO -->
-    <div<?php echo $image ? ' class="hilife-hero--has-image"' : ''; ?> style="<?php echo $image ? 'padding:72px 40px 128px;position:relative;overflow:hidden;min-height:360px;display:flex;align-items:flex-end;' : 'padding:72px 40px 64px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;'; ?>">
+    <div<?php echo $image ? ' class="hilife-hero--has-image"' : ''; ?> style="<?php echo $image ? 'padding:72px var(--gutter) 128px;position:relative;overflow:hidden;min-height:360px;display:flex;align-items:flex-end;' : 'padding:72px var(--gutter) 64px;position:relative;overflow:hidden;'; ?>">
         <?php if ( $image ) : ?>
             <div class="hilife-hero-bg">
                 <div class="hilife-hero-media" style="background-image:url('<?php echo esc_url($image); ?>');background-size:cover;background-position:center;filter:brightness(0.7);"></div>
@@ -67,8 +67,8 @@ $feedback = new WP_Query([
     </div>
 
     <!-- LOCATIONS FOR THIS OCCASION -->
-    <div style="padding:64px 40px;border-bottom:1px solid var(--border);">
-        <div class="hilife-section-label"><?php echo esc_html($term->name); ?> across the North</div>
+    <div class="hilife-section hilife-band--warm">
+        <h2 class="hilife-section-title"><?php echo esc_html($term->name); ?> across the North</h2>
         <div class="hilife-grid-3">
         <?php foreach ( $locations as $location ) :
             $loc_image_field = get_field('location_hero_image', $location);
@@ -95,8 +95,8 @@ $feedback = new WP_Query([
     </div>
 
     <!-- RECENT EVENTS -->
-    <div style="padding:64px 40px;border-bottom:1px solid var(--border);">
-        <div class="hilife-section-label">Recent <?php echo esc_html($term->name); ?></div>
+    <div class="hilife-section hilife-band--paper">
+        <h2 class="hilife-section-title">Recent <?php echo esc_html($term->name); ?></h2>
         <?php if ( $events->have_posts() ) : ?>
         <div class="hilife-grid-2" style="gap:16px;">
         <?php while ( $events->have_posts() ) : $events->the_post();
@@ -119,8 +119,8 @@ $feedback = new WP_Query([
 
     <!-- FEEDBACK -->
     <?php if ( $feedback->have_posts() ) : ?>
-    <div style="padding:64px 40px;background:var(--surface);border-bottom:1px solid var(--border);">
-        <div class="hilife-section-label">What people say</div>
+    <div class="hilife-section hilife-band--paper">
+        <h2 class="hilife-section-title">What people say</h2>
         <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;">
         <?php while ( $feedback->have_posts() ) : $feedback->the_post();
             $dj = get_field('dj_name', get_the_ID());
@@ -140,7 +140,7 @@ $feedback = new WP_Query([
     <?php endif; ?>
 
     <!-- CTA STRIP -->
-    <div style="padding:48px 40px;border-top:1px solid var(--border);background:var(--surface);display:flex;align-items:center;justify-content:space-between;gap:32px;">
+    <div class="hilife-section hilife-band--warm hilife-cta-strip">
         <div>
             <div style="font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);font-family:var(--font-body);margin-bottom:8px;">Planning a <?php echo esc_html(strtolower($term->name)); ?>?</div>
             <div style="font-family:var(--font-display);font-size:22px;font-weight:600;color:var(--text-bright);">Let's talk about <em style="font-style:italic;color:var(--accent);">your night</em></div>

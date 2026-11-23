@@ -16,7 +16,7 @@
 <?php if ( have_posts() ) : the_post(); ?>
 
     <!-- HERO -->
-    <div<?php echo has_post_thumbnail() ? ' class="hilife-hero--has-image"' : ''; ?> style="<?php echo has_post_thumbnail() ? 'padding:72px 40px 120px;position:relative;overflow:hidden;min-height:360px;display:flex;align-items:flex-end;' : 'padding:72px 40px 56px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;'; ?>">
+    <div<?php echo has_post_thumbnail() ? ' class="hilife-hero--has-image"' : ''; ?> style="<?php echo has_post_thumbnail() ? 'padding:72px var(--gutter) 120px;position:relative;overflow:hidden;min-height:360px;display:flex;align-items:flex-end;' : 'padding:72px var(--gutter) 56px;position:relative;overflow:hidden;'; ?>">
         <?php if ( has_post_thumbnail() ) : ?>
             <div class="hilife-hero-bg">
                 <div class="hilife-hero-media">
@@ -34,7 +34,7 @@
     </div>
 
     <!-- CONTENT -->
-    <div style="padding:64px 40px;">
+    <div class="hilife-section hilife-band--black">
         <div style="max-width:740px;font-size:15px;line-height:1.9;color:var(--text);font-family:var(--font-body);font-weight:300;">
             <?php the_content(); ?>
         </div>
@@ -44,7 +44,7 @@
     </div>
 
     <!-- CTA STRIP -->
-    <div style="padding:48px 40px;border-top:1px solid var(--border);background:var(--surface);display:flex;align-items:center;justify-content:space-between;gap:32px;">
+    <div class="hilife-section hilife-band--warm hilife-cta-strip">
         <div>
             <div style="font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);font-family:var(--font-body);margin-bottom:8px;">Planning an event?</div>
             <div style="font-family:var(--font-display);font-size:22px;font-weight:600;color:var(--text-bright);">Let's talk about <em style="font-style:italic;color:var(--accent);">your night</em></div>

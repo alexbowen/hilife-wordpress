@@ -27,7 +27,7 @@ $djs = new WP_Query([
     $dj_page = get_page_by_path('djs');
     $has_hero = $dj_page && has_post_thumbnail($dj_page->ID);
     ?>
-    <div<?php echo $has_hero ? ' class="hilife-hero--has-image"' : ''; ?> style="<?php echo $has_hero ? 'padding:72px 40px 120px;position:relative;overflow:hidden;min-height:360px;display:flex;align-items:flex-end;' : 'padding:72px 40px 56px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;'; ?>">
+    <div<?php echo $has_hero ? ' class="hilife-hero--has-image"' : ''; ?> style="<?php echo $has_hero ? 'padding:72px var(--gutter) 120px;position:relative;overflow:hidden;min-height:360px;display:flex;align-items:flex-end;' : 'padding:72px var(--gutter) 56px;position:relative;overflow:hidden;'; ?>">
         <?php if ( $has_hero ) : ?>
             <div class="hilife-hero-bg">
                 <div class="hilife-hero-media">
@@ -46,7 +46,7 @@ $djs = new WP_Query([
     </div>
 
     <!-- DJ GRID -->
-    <div style="padding:64px 40px;">
+    <div class="hilife-section hilife-band--black">
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;">
         <?php if ( $djs->have_posts() ) :
             while ( $djs->have_posts() ) : $djs->the_post();
@@ -81,7 +81,7 @@ $djs = new WP_Query([
     </div>
 
     <!-- CTA STRIP -->
-    <div style="padding:48px 40px;border-top:1px solid var(--border);background:var(--surface);display:flex;align-items:center;justify-content:space-between;gap:32px;">
+    <div class="hilife-section hilife-band--warm hilife-cta-strip">
         <div>
             <div style="font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);font-family:var(--font-body);margin-bottom:8px;">Planning an event?</div>
             <div style="font-family:var(--font-display);font-size:22px;font-weight:600;color:var(--text-bright);">Let's talk about <em style="font-style:italic;color:var(--accent);">your night</em></div>

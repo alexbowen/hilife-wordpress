@@ -113,7 +113,7 @@ $hero_intro = $intro ?: $occasion->description;
 </div>
 
     <!-- Occasion description -->
-    <div style="padding:48px 40px;border-bottom:1px solid var(--border);">
+    <div class="hilife-section hilife-band--warm">
         <div class="hilife-eyebrow"><?php echo esc_html( $occasion->name ); ?></div>
         <?php if ( $occasion->description ) : ?>
             <p style="font-size:1rem;line-height:1.8;color:var(--text);font-family:var(--font-body);font-weight:300;max-width:var(--content-width);margin-bottom:var(--space-sm);"><?php echo esc_html( $occasion->description ); ?></p>
@@ -125,8 +125,8 @@ $hero_intro = $intro ?: $occasion->description;
     </div>
 
     <!-- Events -->
-    <div style="padding:48px 40px;border-bottom:1px solid var(--border);">
-        <div class="hilife-section-label">Recent <?php echo esc_html( $occasion->name ); ?> events in <?php echo esc_html( $location->name ); ?></div>
+    <div class="hilife-section hilife-band--paper">
+        <h2 class="hilife-section-title">Recent <?php echo esc_html( $occasion->name ); ?> events in <?php echo esc_html( $location->name ); ?></h2>
         <?php if ( $events->have_posts() ) : ?>
         <div class="hilife-grid-2" style="gap:16px;">
         <?php while ( $events->have_posts() ) : $events->the_post();
@@ -149,8 +149,8 @@ $hero_intro = $intro ?: $occasion->description;
 
     <!-- Feedback -->
     <?php if ( $feedback->have_posts() ) : ?>
-    <div style="background:var(--surface);padding:48px 40px;">
-        <div class="hilife-section-label">What our clients say</div>
+    <div class="hilife-section hilife-band--paper">
+        <h2 class="hilife-section-title">What our clients say</h2>
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:var(--space-md);">
         <?php while ( $feedback->have_posts() ) : $feedback->the_post();
             $dj = get_field('dj_name', get_the_ID());
@@ -177,43 +177,38 @@ $hero_intro = $intro ?: $occasion->description;
     ]);
     ?>
     <?php if ( $music_themes ) : ?>
-    <div style="padding:48px 40px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
-        <div class="hilife-section-label">Music for your <?php echo esc_html($occasion->name); ?></div>
-        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:var(--space-sm);">
+    <div class="hilife-section hilife-band--teal">
+        <h2 class="hilife-section-title">Music for your <?php echo esc_html($occasion->name); ?></h2>
+        <div class="hilife-card-grid">
         <?php foreach ( $music_themes as $mt ) : ?>
-            <a href="<?php echo get_permalink($mt->ID); ?>"
-               style="font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-dim);border:1px solid var(--border);padding:7px 16px;font-family:var(--font-body);text-decoration:none;transition:all 0.2s;"
-               onmouseover="this.style.color='var(--accent)';this.style.borderColor='var(--accent)'"
-               onmouseout="this.style.color='var(--text-dim)';this.style.borderColor='var(--border)'">
-                <?php echo esc_html($mt->post_title); ?>
+            <a class="hilife-card" href="<?php echo get_permalink($mt->ID); ?>">
+                <?php if ( has_post_thumbnail($mt->ID) ) : ?>
+                    <span class="hilife-card-media"><?php echo get_the_post_thumbnail($mt->ID, 'medium', ['alt' => '']); ?></span>
+                <?php endif; ?>
+                <span class="hilife-card-title"><?php echo esc_html($mt->post_title); ?></span>
             </a>
         <?php endforeach; ?>
-            <a href="/music" style="font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(20,184,166,0.3);padding:7px 16px;font-family:var(--font-body);text-decoration:none;">+ more →</a>
+            <a class="hilife-card hilife-card--more" href="/music"><span class="hilife-card-title">+ more</span></a>
         </div>
     </div>
     <?php endif; ?>
 
     <!-- Location switcher -->
-    <div style="padding:32px 40px;background:var(--dark);border-bottom:1px solid var(--border);">
-        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
-            <span style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);font-family:var(--font-body);margin-right:12px;white-space:nowrap;"><?php echo esc_html( $occasion->name ); ?> in other areas</span>
+    <div class="hilife-section hilife-band--black">
+        <h2 class="hilife-section-title"><?php echo esc_html( $occasion->name ); ?> in other areas</h2>
+        <div class="hilife-chips">
             <?php
             $locations = get_terms(['taxonomy' => 'location', 'hide_empty' => false]);
             foreach ( $locations as $loc ) :
                 if ( $loc->slug === $location_slug ) continue;
             ?>
-                <a href="/<?php echo esc_attr( $occasion_slug ); ?>/<?php echo esc_attr( $loc->slug ); ?>"
-                   style="font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--panel-text);border:1px solid var(--border);padding:7px 16px;font-family:var(--font-body);text-decoration:none;transition:all 0.2s;"
-                   onmouseover="this.style.color='var(--accent)';this.style.borderColor='var(--accent)'"
-                   onmouseout="this.style.color='var(--panel-text)';this.style.borderColor='var(--border)'">
-                    <?php echo esc_html( $loc->name ); ?>
-                </a>
+                <a class="hilife-chip" href="/<?php echo esc_attr( $occasion_slug ); ?>/<?php echo esc_attr( $loc->slug ); ?>"><?php echo esc_html( $loc->name ); ?></a>
             <?php endforeach; ?>
         </div>
     </div>
 
     <!-- CTA STRIP -->
-    <div style="padding:40px;border-top:1px solid var(--border);background:var(--surface);display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;">
+    <div class="hilife-section hilife-band--warm hilife-cta-strip">
         <div>
             <div style="font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);font-family:var(--font-body);margin-bottom:8px;">Planning an event?</div>
             <div style="font-family:var(--font-body);font-size:20px;font-weight:300;color:var(--text-bright);">Let's talk about <em style="font-style:italic;color:var(--accent);">your night</em></div>

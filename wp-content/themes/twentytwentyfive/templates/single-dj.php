@@ -19,7 +19,7 @@
 ?>
 
     <!-- HERO -->
-    <div style="padding:72px 40px 64px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;">
+    <div style="padding:72px var(--gutter) 64px;position:relative;overflow:hidden;">
         <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(20,184,166,0.04) 0%,transparent 60%);pointer-events:none;"></div>
         <div style="position:relative;display:grid;grid-template-columns:200px 1fr;gap:48px;align-items:start;max-width:900px;">
             <?php if ( has_post_thumbnail() ) : ?>
@@ -48,9 +48,9 @@
     </div>
 
     <!-- BIO -->
-    <div style="padding:64px 40px;border-bottom:1px solid var(--border);">
+    <div class="hilife-section hilife-band--warm">
         <div style="max-width:700px;">
-            <div class="hilife-section-label">About</div>
+            <h2 class="hilife-section-title">About</h2>
             <div style="font-size:14px;line-height:1.9;color:var(--text);font-family:var(--font-body);font-weight:300;">
                 <?php the_content(); ?>
             </div>
@@ -58,7 +58,7 @@
     </div>
 
     <!-- BACK LINK -->
-    <div style="padding:32px 40px;">
+    <div class="hilife-section hilife-section--slim hilife-band--black">
         <a href="/djs" style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--panel-text);font-family:var(--font-body);text-decoration:none;">← Back to all DJs</a>
     </div>
 

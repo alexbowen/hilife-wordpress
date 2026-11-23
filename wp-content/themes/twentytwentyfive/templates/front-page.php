@@ -49,7 +49,7 @@ $has_hero = $home_page_id && has_post_thumbnail($home_page_id);
 <main class="hilife-main">
 
     <!-- HERO -->
-    <div<?php echo $has_hero ? ' class="hilife-hero--has-image"' : ''; ?> style="<?php echo $has_hero ? 'padding:72px 40px 128px;position:relative;overflow:hidden;min-height:420px;display:flex;align-items:flex-end;' : 'padding:72px 40px 64px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;background:var(--black);'; ?>">
+    <div<?php echo $has_hero ? ' class="hilife-hero--has-image"' : ''; ?> style="<?php echo $has_hero ? 'padding:72px var(--gutter) 128px;position:relative;overflow:hidden;min-height:420px;display:flex;align-items:flex-end;' : 'padding:72px var(--gutter) 64px;position:relative;overflow:hidden;background:var(--black);'; ?>">
         <?php if ( $has_hero ) : ?>
             <div class="hilife-hero-bg">
                 <div class="hilife-hero-media">
@@ -73,8 +73,8 @@ $has_hero = $home_page_id && has_post_thumbnail($home_page_id);
     </div>
 
     <!-- OCCASIONS -->
-    <div style="padding:48px 40px;border-bottom:1px solid var(--border);">
-        <div class="hilife-section-label">What's the occasion</div>
+    <div class="hilife-section hilife-band--warm">
+        <h2 class="hilife-section-title">What's the occasion</h2>
         <div class="hilife-grid-3">
         <?php foreach ( $occasions as $occasion ) :
             $image_field = get_field('occasion_hero_image', $occasion);
@@ -105,23 +105,18 @@ $has_hero = $home_page_id && has_post_thumbnail($home_page_id);
     </div>
 
     <!-- LOCATIONS -->
-    <div style="padding:32px 40px;background:var(--dark);border-bottom:1px solid var(--border);">
-        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
-            <span style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);font-family:var(--font-body);margin-right:12px;white-space:nowrap;">Areas we cover</span>
+    <div class="hilife-section hilife-band--teal">
+        <h2 class="hilife-section-title">Areas we cover</h2>
+        <div class="hilife-chips">
             <?php foreach ( $locations as $loc ) : ?>
-                <a href="<?php echo esc_url(get_term_link($loc)); ?>"
-                   style="font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--panel-text);border:1px solid var(--border);padding:7px 16px;font-family:var(--font-body);text-decoration:none;transition:all 0.2s;"
-                   onmouseover="this.style.color='var(--accent)';this.style.borderColor='var(--accent)'"
-                   onmouseout="this.style.color='var(--panel-text)';this.style.borderColor='var(--border)'">
-                    <?php echo esc_html($loc->name); ?>
-                </a>
+                <a class="hilife-chip" href="<?php echo esc_url(get_term_link($loc)); ?>"><?php echo esc_html($loc->name); ?></a>
             <?php endforeach; ?>
         </div>
     </div>
 
     <!-- WHAT WE DO -->
-    <div style="padding:48px 40px;background:var(--surface);border-bottom:1px solid var(--border);">
-        <div class="hilife-section-label">What we do</div>
+    <div class="hilife-section hilife-band--black">
+        <h2 class="hilife-section-title">What we do</h2>
         <div class="hilife-grid-3">
         <?php foreach ( $services as $service ) :
             $image_field = get_field('service_hero_image', $service);
@@ -152,8 +147,8 @@ $has_hero = $home_page_id && has_post_thumbnail($home_page_id);
     </div>
 
     <!-- RECENT EVENTS -->
-    <div style="padding:48px 40px;border-bottom:1px solid var(--border);">
-        <div class="hilife-section-label">Recent events</div>
+    <div class="hilife-section hilife-band--paper">
+        <h2 class="hilife-section-title">Recent events</h2>
         <?php if ( $events->have_posts() ) : ?>
         <div class="hilife-grid-2" style="gap:16px;">
         <?php while ( $events->have_posts() ) : $events->the_post();
@@ -175,8 +170,8 @@ $has_hero = $home_page_id && has_post_thumbnail($home_page_id);
     </div>
 
     <!-- FEEDBACK -->
-    <div style="padding:48px 40px;background:var(--surface);border-bottom:1px solid var(--border);">
-        <div class="hilife-section-label">What people say</div>
+    <div class="hilife-section hilife-band--paper">
+        <h2 class="hilife-section-title">What people say</h2>
         <div class="hilife-grid-2" style="gap:16px;">
         <?php if ( $feedback->have_posts() ) :
             while ( $feedback->have_posts() ) : $feedback->the_post();
@@ -197,30 +192,28 @@ $has_hero = $home_page_id && has_post_thumbnail($home_page_id);
     </div>
 
     <!-- MUSIC -->
-    <div style="padding:48px 40px;border-bottom:1px solid var(--border);">
-        <div class="hilife-section-label">The music</div>
-        <div style="max-width:700px;">
-            <p style="font-size:14px;color:var(--text-dim);line-height:1.8;font-family:var(--font-body);font-weight:300;margin-bottom:24px;">
-                From Motown to metal, Madchester to Speakeasy swing. Our DJs know their music — and they'll tailor every set to your night rather than playing the same playlist they played last weekend.
-            </p>
-            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;">
-                <?php
-                $music_terms = get_posts(['post_type' => 'music-theme', 'posts_per_page' => 11, 'orderby' => 'rand']);
-                foreach ( $music_terms as $mt ) : ?>
-                    <a href="<?php echo get_permalink($mt->ID); ?>"
-                       style="font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--panel-text);border:1px solid var(--border);padding:7px 16px;font-family:var(--font-body);text-decoration:none;transition:all 0.2s;"
-                       onmouseover="this.style.color='var(--accent)';this.style.borderColor='var(--accent)'"
-                       onmouseout="this.style.color='var(--panel-text)';this.style.borderColor='var(--border)'">
-                        <?php echo esc_html($mt->post_title); ?>
-                    </a>
-                <?php endforeach; ?>
-                <a href="/music" style="font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(20,184,166,0.3);padding:7px 16px;font-family:var(--font-body);text-decoration:none;">+ more →</a>
-            </div>
+    <div class="hilife-section hilife-band--teal">
+        <h2 class="hilife-section-title">The music</h2>
+        <p class="hilife-section-intro">
+            From Motown to metal, Madchester to Speakeasy swing. Our DJs know their music — and they'll tailor every set to your night rather than playing the same playlist they played last weekend.
+        </p>
+        <div class="hilife-card-grid">
+            <?php
+            $music_terms = get_posts(['post_type' => 'music-theme', 'posts_per_page' => 11, 'orderby' => 'rand']);
+            foreach ( $music_terms as $mt ) : ?>
+                <a class="hilife-card" href="<?php echo get_permalink($mt->ID); ?>">
+                    <?php if ( has_post_thumbnail($mt->ID) ) : ?>
+                        <span class="hilife-card-media"><?php echo get_the_post_thumbnail($mt->ID, 'medium', ['alt' => '']); ?></span>
+                    <?php endif; ?>
+                    <span class="hilife-card-title"><?php echo esc_html($mt->post_title); ?></span>
+                </a>
+            <?php endforeach; ?>
+            <a class="hilife-card hilife-card--more" href="/music"><span class="hilife-card-title">+ more</span></a>
         </div>
     </div>
 
     <!-- CTA STRIP -->
-    <div style="padding:40px;background:var(--surface);display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;">
+    <div class="hilife-section hilife-band--warm hilife-cta-strip">
         <div>
             <div style="font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);font-family:var(--font-body);margin-bottom:8px;">Planning an event?</div>
             <div style="font-family:var(--font-body);font-size:20px;font-weight:300;color:var(--text-bright);">Let's talk about <em style="font-style:italic;color:var(--accent);">your night</em></div>

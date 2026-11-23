@@ -26,6 +26,21 @@
     --space-sm:       1rem;
     --space-md:       2rem;
     --space-lg:       4rem;
+
+    /* Section bands + layout (shared with hilife-header.css — keep in sync) */
+    --max-width:      1200px;
+    --band-teal:      #16302E;
+    --band-warm:      #2A241E;
+    --band-text-dim:  #A39C93;   /* --text-dim lifted to AA on teal/warm bands */
+    --paper:          #EFE8DA;
+    --paper-text:     #1A1612;
+    --paper-dim:      #5A5348;
+    --paper-accent:   #0B6E64;   /* teal for text/links on paper only (AA on cream) */
+    --paper-card:     #FFFFFF;
+    --paper-border:   #DCD2C1;
+    --section-x:      clamp(24px, 6vw, 96px);
+    --section-y:      clamp(56px, 8vw, 104px);
+    --gutter:         max(var(--section-x), calc((100% - var(--max-width)) / 2));
 }
 
 /* ── BASE ── */
@@ -199,19 +214,22 @@ html {
 }
 
 .hilife-footer-inner {
-    padding: 40px 40px 24px;
+    padding: 28px var(--gutter) 16px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: var(--space-md);
+    gap: 24px;
 }
 
 .hilife-footer-bottom {
-    padding: 16px 40px;
+    padding: 10px var(--gutter);
     border-top: 1px solid var(--border-dim);
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    gap: 4px 16px;
     font-size: 0.7rem;
+    line-height: 1.4;
     color: var(--panel-text-dim);
 }
 
@@ -229,13 +247,14 @@ html {
 .hilife-footer-brand .hilife-logo-text {
     font-size: 1.2rem;
     display: block;
-    margin-bottom: var(--space-xs);
+    margin-bottom: 6px;
 }
 
 .hilife-footer-tagline {
     font-size: 0.75rem;
     color: var(--panel-text-dim);
-    line-height: 1.6;
+    line-height: 1.45;
+    margin-bottom: 0;
 }
 
 .hilife-footer-col h4 {
@@ -245,7 +264,7 @@ html {
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--accent);
-    margin-bottom: var(--space-sm);
+    margin-bottom: 10px;
 }
 
 .hilife-footer-col ul {
@@ -255,12 +274,13 @@ html {
 }
 
 .hilife-footer-col ul li {
-    margin-bottom: 4px;
+    margin-bottom: 2px;
 }
 
 .hilife-footer-col ul a {
     padding: 0;
     font-size: 0.8rem;
+    line-height: 1.5;
     color: var(--panel-text-dim);
     transition: color 0.2s ease;
     text-decoration: none;
@@ -323,15 +343,14 @@ html {
 
     .hilife-footer-inner {
         grid-template-columns: 1fr;
-        gap: 24px;
-        padding: 32px 20px 20px;
+        gap: 18px;
+        padding: 24px var(--gutter) 12px;
     }
 
     .hilife-footer-bottom {
-        flex-direction: column;
-        gap: 8px;
+        justify-content: center;
         text-align: center;
-        padding: var(--space-sm) 20px;
+        padding: 10px var(--gutter);
     }
 }
 

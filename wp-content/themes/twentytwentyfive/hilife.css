@@ -32,8 +32,22 @@
     --space-lg:      4rem;
     --space-xl:      8rem;
 
-    --max-width:     1200px;
     --content-width: 800px;
+
+    /* Section bands + layout (shared with hilife-header.css — keep in sync) */
+    --max-width:      1200px;
+    --band-teal:      #16302E;
+    --band-warm:      #2A241E;
+    --band-text-dim:  #A39C93;   /* --text-dim lifted to AA on teal/warm bands */
+    --paper:          #EFE8DA;
+    --paper-text:     #1A1612;
+    --paper-dim:      #5A5348;
+    --paper-accent:   #0B6E64;   /* teal for text/links on paper only (AA on cream) */
+    --paper-card:     #FFFFFF;
+    --paper-border:   #DCD2C1;
+    --section-x:      clamp(24px, 6vw, 96px);
+    --section-y:      clamp(56px, 8vw, 104px);
+    --gutter:         max(var(--section-x), calc((100% - var(--max-width)) / 2));
 }
 
 /* ── RESET & BASE ── */
@@ -268,19 +282,22 @@ strong { font-weight: 500; color: var(--text-bright); }
 }
 
 .hilife-footer-inner {
-    padding: 40px 40px 24px;
+    padding: 28px var(--gutter) 16px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: var(--space-md);
+    gap: 24px;
 }
 
 .hilife-footer-bottom {
-    padding: 16px 40px;
+    padding: 10px var(--gutter);
     border-top: 1px solid var(--border-dim);
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    gap: 4px 16px;
     font-size: 0.7rem;
+    line-height: 1.4;
     color: var(--panel-text-dim);
 }
 
@@ -298,13 +315,14 @@ strong { font-weight: 500; color: var(--text-bright); }
 .hilife-footer-brand .hilife-logo-text {
     font-size: 1.2rem;
     display: block;
-    margin-bottom: var(--space-xs);
+    margin-bottom: 6px;
 }
 
 .hilife-footer-tagline {
     font-size: 0.75rem;
     color: var(--panel-text-dim);
-    line-height: 1.6;
+    line-height: 1.45;
+    margin-bottom: 0;
 }
 
 .hilife-footer-col h4 {
@@ -314,7 +332,7 @@ strong { font-weight: 500; color: var(--text-bright); }
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--accent);
-    margin-bottom: var(--space-sm);
+    margin-bottom: 10px;
 }
 
 .hilife-footer-col ul {
@@ -324,12 +342,13 @@ strong { font-weight: 500; color: var(--text-bright); }
 }
 
 .hilife-footer-col ul li {
-    margin-bottom: 4px;
+    margin-bottom: 2px;
 }
 
 .hilife-footer-col ul a {
     padding: 0;
     font-size: 0.8rem;
+    line-height: 1.5;
     color: var(--panel-text-dim);
     transition: color 0.2s ease;
     text-decoration: none;
@@ -347,10 +366,9 @@ strong { font-weight: 500; color: var(--text-bright); }
 
 /* ── PAGE HERO ── */
 .hilife-hero {
-    padding: var(--space-xl) 40px var(--space-lg);
+    padding: var(--space-xl) var(--gutter) var(--space-lg);
     position: relative;
     overflow: hidden;
-    border-bottom: 1px solid var(--border);
 }
 
 .hilife-hero::before {
@@ -807,15 +825,14 @@ strong { font-weight: 500; color: var(--text-bright); }
 
     .hilife-footer-inner {
         grid-template-columns: 1fr;
-        gap: 24px;
-        padding: 32px 20px 20px;
+        gap: 18px;
+        padding: 24px var(--gutter) 12px;
     }
 
     .hilife-footer-bottom {
-        flex-direction: column;
-        gap: 8px;
+        justify-content: center;
         text-align: center;
-        padding: var(--space-sm) 20px;
+        padding: 10px var(--gutter);
     }
 
     .hilife-playlist {
@@ -840,4 +857,208 @@ strong { font-weight: 500; color: var(--text-bright); }
     .hilife-nav {
         top: 56px;
     }
+}
+
+/* ============================================================
+   SECTIONS, BANDS & SHARED COMPONENTS (polish-rc1)
+   Sections are separated by spacing and background bands, not divider lines.
+   ============================================================ */
+.hilife-section {
+    padding: var(--section-y) var(--gutter);
+}
+
+.hilife-section--slim {
+    padding-top: clamp(24px, 3vw, 40px);
+    padding-bottom: clamp(24px, 3vw, 40px);
+}
+
+.hilife-band--black { background: var(--black); }
+.hilife-band--teal  { background: var(--band-teal); --text-dim: var(--band-text-dim); }
+.hilife-band--warm  { background: var(--band-warm); --text-dim: var(--band-text-dim); }
+
+/* Paper: events/testimonial content. Re-points the colour tokens that the
+   inline card styles use, so cards turn white with dark text automatically. */
+.hilife-band--paper {
+    background: var(--paper);
+    color: var(--paper-text);
+    --text:           var(--paper-text);
+    --text-bright:    var(--paper-text);
+    --text-dim:       var(--paper-dim);
+    --panel:          var(--paper-card);
+    --panel-border:   var(--paper-border);
+    --panel-text:     var(--paper-text);
+    --panel-text-dim: var(--paper-dim);
+    --border:         var(--paper-border);
+    --accent:         var(--paper-accent);
+}
+
+.hilife-band--paper a { color: var(--paper-accent); }
+
+/* Consecutive paper sections read as one band */
+.hilife-band--paper + .hilife-band--paper { padding-top: 0; }
+
+/* ── SECTION HEADINGS ── (selector outranks .hilife-main h2 WP-content margins) */
+.hilife-main .hilife-section-title,
+.hilife-section-title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    color: var(--text-bright);
+    margin: 0 0 clamp(20px, 2.4vw, 32px);
+}
+
+.hilife-section-intro {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--text-dim);
+    max-width: 60ch;
+    margin: -8px 0 clamp(24px, 3vw, 36px);
+}
+
+/* ── CTA STRIP ── */
+.hilife-cta-strip {
+    padding-top: clamp(40px, 5vw, 64px);
+    padding-bottom: clamp(40px, 5vw, 64px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+}
+
+/* ── CHIPS (areas / locations) and CARDS (music) — one hover system:
+   lift 2px, teal, 150ms ── */
+.hilife-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.hilife-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 22px;
+    border: 1.5px solid var(--panel-border);
+    border-radius: 999px;
+    color: var(--panel-text);
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    text-decoration: none;
+    transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease, transform 150ms ease;
+}
+
+.hilife-chip::after {
+    content: '\2192';
+    color: var(--accent);
+    transition: color 150ms ease, transform 150ms ease;
+}
+
+.hilife-chip:hover,
+.hilife-chip:focus-visible {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--black);
+    transform: translateY(-2px);
+    opacity: 1;
+}
+
+.hilife-chip:hover::after,
+.hilife-chip:focus-visible::after {
+    color: var(--black);
+    transform: translateX(2px);
+}
+
+.hilife-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+}
+
+.hilife-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-top: 3px solid var(--accent);
+    border-radius: 16px;
+    overflow: hidden;
+    color: var(--panel-text);
+    text-decoration: none;
+    transition: transform 150ms ease, border-color 150ms ease, box-shadow 150ms ease, color 150ms ease;
+}
+
+.hilife-card-media {
+    display: block;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+}
+
+.hilife-card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.85);
+}
+
+.hilife-card-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 18px 20px;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    line-height: 1.35;
+}
+
+.hilife-card-title::after {
+    content: '\2192';
+    color: var(--accent);
+    flex-shrink: 0;
+    transition: transform 150ms ease;
+}
+
+.hilife-card--more {
+    background: transparent;
+    color: var(--accent);
+}
+
+.hilife-card:hover,
+.hilife-card:focus-visible {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+    color: var(--text-bright);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.28);
+    opacity: 1;
+}
+
+.hilife-card:hover .hilife-card-title::after,
+.hilife-card:focus-visible .hilife-card-title::after {
+    transform: translateX(3px);
+}
+
+.hilife-chip:focus-visible,
+.hilife-card:focus-visible {
+    outline: 2px solid var(--text-bright);
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hilife-chip, .hilife-card,
+    .hilife-chip::after, .hilife-card-title::after { transition: none; }
+    .hilife-chip:hover, .hilife-chip:focus-visible,
+    .hilife-card:hover, .hilife-card:focus-visible { transform: none; }
+}
+
+@media (max-width: 480px) {
+    .hilife-chip { padding: 10px 18px; }
+    .hilife-card-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
 }

@@ -18,7 +18,7 @@
 ?>
 
     <!-- HERO -->
-    <div<?php echo has_post_thumbnail() ? ' class="hilife-hero--has-image"' : ''; ?> style="<?php echo has_post_thumbnail() ? 'padding:72px 40px 112px;position:relative;overflow:hidden;min-height:360px;display:flex;align-items:flex-end;' : 'padding:72px 40px 48px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;'; ?>">
+    <div<?php echo has_post_thumbnail() ? ' class="hilife-hero--has-image"' : ''; ?> style="<?php echo has_post_thumbnail() ? 'padding:72px var(--gutter) 112px;position:relative;overflow:hidden;min-height:360px;display:flex;align-items:flex-end;' : 'padding:72px var(--gutter) 48px;position:relative;overflow:hidden;'; ?>">
         <?php if ( has_post_thumbnail() ) : ?>
             <div class="hilife-hero-bg">
                 <div class="hilife-hero-media">
@@ -40,8 +40,8 @@
 
     <!-- PLAYLIST -->
     <?php if ($playlist) : ?>
-    <div style="padding:40px 40px;border-bottom:1px solid var(--border);">
-        <div class="hilife-section-label">Sample playlist</div>
+    <div class="hilife-section hilife-band--black">
+        <h2 class="hilife-section-title">Sample playlist</h2>
         <ol style="list-style:none;columns:2;gap:var(--space-md);padding-left:0;">
         <?php foreach ($playlist as $row) : ?>
             <li style="font-size:14px;color:var(--panel-text);padding:8px 12px 8px 0;border-bottom:1px solid var(--panel-border);background:var(--panel);break-inside:avoid;display:flex;align-items:baseline;">
@@ -53,7 +53,7 @@
     <?php endif; ?>
 
     <!-- BACK + CTA -->
-    <div style="padding:40px;border-top:1px solid var(--border);background:var(--surface);display:flex;align-items:center;justify-content:space-between;gap:32px;">
+    <div class="hilife-section hilife-band--warm hilife-cta-strip">
         <a href="/music" style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--panel-text);font-family:var(--font-body);text-decoration:none;">← All music</a>
         <a href="/contact" style="display:inline-block;background:var(--gold);color:var(--black);font-family:var(--font-mark);font-size:13px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:13px 28px;text-decoration:none;white-space:nowrap;">Get in touch</a>
     </div>
