@@ -196,13 +196,6 @@ $has_hero = $home_page_id && has_post_thumbnail($home_page_id);
         </div>
     </div>
 
-    <!-- PHOTOGRAPHY PLACEHOLDER -->
-    <div style="padding:48px 40px;border-bottom:1px solid var(--border);">
-        <div style="background:var(--panel);border:1px dashed var(--panel-border);min-height:200px;display:flex;align-items:center;justify-content:center;">
-            <span style="font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);font-family:var(--font-body);">Photography coming soon</span>
-        </div>
-    </div>
-
     <!-- MUSIC -->
     <div style="padding:48px 40px;border-bottom:1px solid var(--border);">
         <div class="hilife-section-label">The music</div>
@@ -226,15 +219,8 @@ $has_hero = $home_page_id && has_post_thumbnail($home_page_id);
         </div>
     </div>
 
-    <!-- PHOTOGRAPHY PLACEHOLDER -->
-    <div style="padding:48px 40px;border-bottom:1px solid var(--border);">
-        <div style="background:var(--panel);border:1px dashed var(--panel-border);min-height:200px;display:flex;align-items:center;justify-content:center;">
-            <span style="font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);font-family:var(--font-body);">Photography coming soon</span>
-        </div>
-    </div>
-
     <!-- CTA STRIP -->
-    <div style="padding:40px;border-top:1px solid var(--border);background:var(--surface);display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;">
+    <div style="padding:40px;background:var(--surface);display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;">
         <div>
             <div style="font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);font-family:var(--font-body);margin-bottom:8px;">Planning an event?</div>
             <div style="font-family:var(--font-body);font-size:20px;font-weight:300;color:var(--text-bright);">Let's talk about <em style="font-style:italic;color:var(--accent);">your night</em></div>
