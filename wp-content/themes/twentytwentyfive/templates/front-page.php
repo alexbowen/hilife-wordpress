@@ -49,7 +49,7 @@ $has_hero = $home_page_id && has_post_thumbnail($home_page_id);
 <main class="hilife-main">
 
     <!-- HERO -->
-    <div<?php echo $has_hero ? ' class="hilife-hero--has-image"' : ''; ?> style="<?php echo $has_hero ? 'padding:72px 40px 128px;position:relative;overflow:hidden;min-height:420px;display:flex;align-items:flex-end;' : 'padding:72px 40px 64px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;background:linear-gradient(135deg,var(--surface) 0%,var(--black) 60%,#1c1a0c 100%);'; ?>">
+    <div<?php echo $has_hero ? ' class="hilife-hero--has-image"' : ''; ?> style="<?php echo $has_hero ? 'padding:72px 40px 128px;position:relative;overflow:hidden;min-height:420px;display:flex;align-items:flex-end;' : 'padding:72px 40px 64px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;background:var(--black);'; ?>">
         <?php if ( $has_hero ) : ?>
             <div class="hilife-hero-bg">
                 <div class="hilife-hero-media">
@@ -58,7 +58,7 @@ $has_hero = $home_page_id && has_post_thumbnail($home_page_id);
             </div>
             <div class="hilife-hero-overlay"></div>
         <?php else : ?>
-            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 80% 50%,rgba(20,184,166,0.05) 0%,transparent 55%);pointer-events:none;"></div>
+            <div class="hilife-hero-ambient" aria-hidden="true"></div>
         <?php endif; ?>
         <div style="position:relative;max-width:700px;">
             <div class="hilife-eyebrow">Leeds & the North of England · Est. 2006</div>

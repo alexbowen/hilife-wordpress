@@ -396,6 +396,49 @@ strong { font-weight: 500; color: var(--text-bright); }
     pointer-events: none;
 }
 
+/* ── HOMEPAGE HERO AMBIENT BACKGROUND (no-image state) ──
+   Glow is weighted to the right so the left-aligned headline stays legible.
+   Not a .hilife-hero-media element, so the parallax JS ignores it. */
+.hilife-hero-ambient {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.hilife-hero-ambient::before {
+    content: '';
+    position: absolute;
+    inset: -20%;
+    background:
+        radial-gradient(ellipse 50% 60% at 78% 35%, rgba(20,184,166,0.14) 0%, transparent 60%),
+        radial-gradient(ellipse 45% 55% at 92% 85%, rgba(214,140,90,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 50% at 12% 100%, rgba(20,184,166,0.06) 0%, transparent 60%);
+    animation: hilife-ambient-drift 28s ease-in-out infinite alternate;
+    will-change: transform;
+}
+
+.hilife-hero-ambient::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 40%;
+    background: linear-gradient(to bottom, transparent 0%, rgba(26,22,18,0.6) 100%);
+}
+
+@keyframes hilife-ambient-drift {
+    from { transform: translate3d(-2%, 1%, 0) scale(1); }
+    to   { transform: translate3d(2%, -1%, 0) scale(1.06); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hilife-hero-ambient::before { animation: none; }
+}
+
+@media (max-width: 768px) {
+    .hilife-hero-ambient::before { animation: none; }
+}
+
 .hilife-eyebrow {
     font-size: 0.65rem;
     letter-spacing: 0.3em;
