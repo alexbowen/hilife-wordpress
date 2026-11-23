@@ -20,6 +20,7 @@
     --text:           #EDE8DC;
     --text-dim:       #8F8880;
     --text-bright:    #F7F2E8;
+    --footer-bg:      #383229;
 
     --font-display:  'DM Serif Display', Georgia, serif;
     --font-body:     'DM Sans', sans-serif;
@@ -258,27 +259,40 @@ strong { font-weight: 500; color: var(--text-bright); }
     background: var(--accent);
 }
 
-/* ── FOOTER ── */
+/* ── FOOTER ──
+   Keep identical in hilife.css and assets/css/hilife-header.css (events app). */
 .hilife-footer {
-    background: var(--dark);
-    border-top: 2px solid var(--accent);
+    background: var(--footer-bg);
+    border-top: 1px solid var(--accent);
+    color: var(--panel-text-dim);
 }
 
 .hilife-footer-inner {
-    padding: var(--space-xl) 40px var(--space-md);
+    padding: 40px 40px 24px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: var(--space-lg);
+    gap: var(--space-md);
 }
 
 .hilife-footer-bottom {
-    padding: var(--space-md) 40px;
+    padding: 16px 40px;
     border-top: 1px solid var(--border-dim);
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 0.7rem;
-    color: var(--text-dim);
+    color: var(--panel-text-dim);
+}
+
+.hilife-footer-bottom a {
+    color: var(--panel-text-dim);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.hilife-footer-bottom a:hover {
+    color: var(--accent);
+    opacity: 1;
 }
 
 .hilife-footer-brand .hilife-logo-text {
@@ -289,7 +303,7 @@ strong { font-weight: 500; color: var(--text-bright); }
 
 .hilife-footer-tagline {
     font-size: 0.75rem;
-    color: var(--text-dim);
+    color: var(--panel-text-dim);
     line-height: 1.6;
 }
 
@@ -305,16 +319,20 @@ strong { font-weight: 500; color: var(--text-bright); }
 
 .hilife-footer-col ul {
     list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .hilife-footer-col ul li {
-    margin-bottom: 8px;
+    margin-bottom: 4px;
 }
 
 .hilife-footer-col ul a {
+    padding: 0;
     font-size: 0.8rem;
-    color: var(--panel-text);
+    color: var(--panel-text-dim);
     transition: color 0.2s ease;
+    text-decoration: none;
 }
 
 .hilife-footer-col ul a:hover {
@@ -789,7 +807,8 @@ strong { font-weight: 500; color: var(--text-bright); }
 
     .hilife-footer-inner {
         grid-template-columns: 1fr;
-        gap: var(--space-md);
+        gap: 24px;
+        padding: 32px 20px 20px;
     }
 
     .hilife-footer-bottom {

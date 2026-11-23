@@ -6,15 +6,15 @@
                 Professional DJ hire & entertainment<br>
                 across the North of England since 2006
             </p>
-            <div style="display:flex;gap:16px;margin-top:16px;">
+            <div style="display:flex;gap:16px;margin-top:12px;">
                 <a href="https://www.facebook.com/hilifeentertainmentleeds" target="_blank" rel="noopener"
-                   style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--panel-text);text-decoration:none;transition:color 0.2s;"
+                   style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--panel-text-dim);text-decoration:none;transition:color 0.2s;"
                    onmouseover="this.style.color='var(--accent)'"
-                   onmouseout="this.style.color='var(--panel-text)'">Facebook</a>
+                   onmouseout="this.style.color='var(--panel-text-dim)'">Facebook</a>
                 <a href="https://www.instagram.com/hilifeentertainmentleeds/" target="_blank" rel="noopener"
-                   style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--panel-text);text-decoration:none;transition:color 0.2s;"
+                   style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--panel-text-dim);text-decoration:none;transition:color 0.2s;"
                    onmouseover="this.style.color='var(--accent)'"
-                   onmouseout="this.style.color='var(--panel-text)'">Instagram</a>
+                   onmouseout="this.style.color='var(--panel-text-dim)'">Instagram</a>
             </div>
         </div>
         <div class="hilife-footer-col">
